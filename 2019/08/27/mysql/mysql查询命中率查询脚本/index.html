@@ -11,10 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/新的开始/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/新的开始/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/新的开始/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/新的开始/logo.svg?v=7.3.0" color="#222">
 
 <link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="弎柒-blog">
 <meta property="og:description" content="当一个mysql的查询量很高时候，有很多种优化方案。分库分表，主从分离等都是不错的选择。主从分离情况下，我们怎么权衡一个DB够不够优秀呢?通常我们会选择查询缓存命中率来作为读库的一个指标。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-14T04:08:09.081Z">
+<meta property="og:updated_time" content="2020-05-14T09:20:30.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql查询命中率查询脚本">
 <meta name="twitter:description" content="当一个mysql的查询量很高时候，有很多种优化方案。分库分表，主从分离等都是不错的选择。主从分离情况下，我们怎么权衡一个DB够不够优秀呢?通常我们会选择查询缓存命中率来作为读库的一个指标。">
@@ -274,7 +274,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-14 12:08:09" itemprop="dateModified" datetime="2020-05-14T12:08:09+08:00">2020-05-14</time>
+                <time title="Modified: 2020-05-14 17:20:30" itemprop="dateModified" datetime="2020-05-14T17:20:30+08:00">2020-05-14</time>
               </span>
             
           
@@ -332,9 +332,9 @@
 
 <p>但是这两个值是总的数量，并不是一段时间内的，参考价值不大，所以我们要取一段时间内的差值来算<br>命中率 = (第二次读内存次数 - 第一次读内存次数) / (第二次查询总数 - 第一次查询总数)</p>
 <p>算了好多次，都是重复性的，有点繁琐，所以写了个脚本来算</p>
-<blockquote>
-<p> bash &lt;(curl -s <a href="https://www.isugar.wang/tools/mysql_hit_rate.sh" target="_blank" rel="noopener">https://www.isugar.wang/tools/mysql_hit_rate.sh</a>)</p>
-</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"MYSQL缓存命中查询脚本"</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入 mysql 用户/root              "</span> user</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入 mysql 密码/''                "</span> pass</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入 mysql 域名/localhost         "</span> host</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入 mysql 端口/3306              "</span> port</span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"请输入       间隔/60s               "</span> slp</span><br><span class="line"></span><br><span class="line">user=<span class="variable">$&#123;user:-"root"&#125;</span></span><br><span class="line">pass=<span class="variable">$&#123;pass:-""&#125;</span></span><br><span class="line">host=<span class="variable">$&#123;host:-"localhost"&#125;</span></span><br><span class="line">port=<span class="variable">$&#123;port:-"3306"&#125;</span></span><br><span class="line">slp=<span class="variable">$&#123;slp:-"60"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"开始提取打点信息"</span></span><br><span class="line">info=`mysql -u<span class="variable">$&#123;user&#125;</span> -p<span class="variable">$&#123;pass&#125;</span> -h<span class="variable">$&#123;host&#125;</span> -P<span class="variable">$&#123;port&#125;</span> -e <span class="string">"show status"</span> 2&gt;/dev/null | egrep <span class="string">'Innodb_buffer_pool_reads|Innodb_buffer_pool_read_requests'</span> | awk <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$&#123;info&#125;</span> == <span class="string">""</span> ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"提取mysql配置信息失败"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -a info1 &lt;&lt;&lt; <span class="variable">$&#123;info&#125;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第一次打点信息 请求数: <span class="variable">$&#123;info1[0]&#125;</span>, 读磁盘数: <span class="variable">$&#123;info1[1]&#125;</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"休眠<span class="variable">$&#123;slp&#125;</span>s"</span></span><br><span class="line">sleep <span class="variable">$&#123;slp&#125;</span></span><br><span class="line"></span><br><span class="line">info=`mysql -u<span class="variable">$&#123;user&#125;</span> -p<span class="variable">$&#123;pass&#125;</span> -h<span class="variable">$&#123;host&#125;</span> -P<span class="variable">$&#123;port&#125;</span> -e <span class="string">"show status"</span> 2&gt;/dev/null | egrep <span class="string">'Innodb_buffer_pool_reads|Innodb_buffer_pool_read_requests'</span> | awk <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line"><span class="built_in">read</span> -a info2 &lt;&lt;&lt; <span class="variable">$&#123;info&#125;</span></span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$&#123;info&#125;</span> == <span class="string">""</span> ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"提取mysql配置信息失败"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"第二次打点信息 请求数: <span class="variable">$&#123;info2[0]&#125;</span>, 读磁盘数: <span class="variable">$&#123;info2[1]&#125;</span>"</span></span><br><span class="line"></span><br><span class="line">requests=`expr <span class="variable">$&#123;info2[0]&#125;</span> - <span class="variable">$&#123;info1[0]&#125;</span>`</span><br><span class="line">reads=`expr <span class="variable">$&#123;info2[1]&#125;</span> - <span class="variable">$&#123;info1[1]&#125;</span>`</span><br><span class="line"><span class="built_in">echo</span> | awk <span class="string">"&#123; print \"命中率:\", (<span class="variable">$requests</span>-<span class="variable">$reads</span>) / <span class="variable">$requests</span> * 100.0 &#125;"</span></span><br></pre></td></tr></table></figure>
+
+<p><em>使用</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MYSQL缓存命中查询脚本</span><br><span class="line">请输入 mysql 用户/root              xxx</span><br><span class="line">请输入 mysql 密码/&apos;&apos;                xxx</span><br><span class="line">请输入 mysql 域名/localhost</span><br><span class="line">请输入 mysql 端口/3306</span><br><span class="line">请输入       间隔/60s               10</span><br><span class="line">开始提取打点信息</span><br><span class="line">第一次打点信息 请求数: 42766927561, 读磁盘数: 566510284</span><br><span class="line">休眠10s</span><br><span class="line">第二次打点信息 请求数: 42767040750, 读磁盘数: 566511295</span><br><span class="line">命中率: 99.1068</span><br></pre></td></tr></table></figure>
 
 
@@ -372,8 +372,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2020/05/14/大数据平台/搭建Sqoop/" rel="prev" title="">
-                   <i class="fa fa-chevron-right"></i>
+                <a href="/2020/05/14/warehouse/搭建warehouse/" rel="prev" title="搭建一套Warehouse">
+                  搭建一套Warehouse <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -457,7 +457,9 @@
         
           
         
-        <span class="site-state-item-count">4</span>
+          
+        
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -480,7 +482,17 @@
         
           
         
-        <span class="site-state-item-count">4</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>

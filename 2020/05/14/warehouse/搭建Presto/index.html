@@ -55,22 +55,20 @@
   };
 </script>
 
-  <meta name="description" content="公司用的是Redis机器。最近迁移了一次机房。顺便用上了第三方的Redis存储。然后，过了不久，redis内存就满了。">
-<meta name="keywords" content="Redis">
+  <meta name="description" content="弎柒-blog">
+<meta name="keywords" content="warehouse,presto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一次Redis内存分析记录">
-<meta property="og:url" content="https://qxsugar.github.io/2019/08/14/redis/一次redis性能分析/index.html">
+<meta property="og:title" content="搭建presto">
+<meta property="og:url" content="https://qxsugar.github.io/2020/05/14/warehouse/搭建Presto/index.html">
 <meta property="og:site_name" content="弎柒-blog">
-<meta property="og:description" content="公司用的是Redis机器。最近迁移了一次机房。顺便用上了第三方的Redis存储。然后，过了不久，redis内存就满了。">
+<meta property="og:description" content="弎柒-blog">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://qxsugar.github.io/images/NOqC6S.png">
-<meta property="og:updated_time" content="2020-05-14T09:37:51.349Z">
+<meta property="og:updated_time" content="2020-05-14T09:59:57.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一次Redis内存分析记录">
-<meta name="twitter:description" content="公司用的是Redis机器。最近迁移了一次机房。顺便用上了第三方的Redis存储。然后，过了不久，redis内存就满了。">
-<meta name="twitter:image" content="https://qxsugar.github.io/images/NOqC6S.png">
+<meta name="twitter:title" content="搭建presto">
+<meta name="twitter:description" content="弎柒-blog">
   <link rel="alternate" href="/atom.xml" title="弎柒-blog" type="application/atom+xml">
-  <link rel="canonical" href="https://qxsugar.github.io/2019/08/14/redis/一次redis性能分析/">
+  <link rel="canonical" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建Presto/">
 
 
 <script id="page-configurations">
@@ -84,7 +82,7 @@
   };
 </script>
 
-  <title>一次Redis内存分析记录 | 弎柒-blog</title>
+  <title>搭建presto | 弎柒-blog</title>
   
 
 
@@ -234,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2019/08/14/redis/一次redis性能分析/">
+    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建Presto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="弎柒">
@@ -248,7 +246,7 @@
       <header class="post-header">
 
         
-          <h2 class="post-title" itemprop="name headline">一次Redis内存分析记录
+          <h2 class="post-title" itemprop="name headline">搭建presto
 
             
           </h2>
@@ -265,19 +263,11 @@
                 
               
 
-              <time title="Created: 2019-08-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-14T00:00:00+08:00">2019-08-14</time>
+              <time title="Created: 2020-05-14 09:40:06 / Modified: 17:59:57" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-14 17:37:51" itemprop="dateModified" datetime="2020-05-14T17:37:51+08:00">2020-05-14</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -286,7 +276,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/warehouse/" itemprop="url" rel="index"><span itemprop="name">warehouse</span></a></span>
 
                 
                 
@@ -305,43 +295,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>公司用的是Redis机器。<br>最近迁移了一次机房。<br>顺便用上了第三方的Redis存储。<br>然后，过了不久，redis内存就满了。</p>
-<a id="more"></a>
-
-<h3 id="step1-事情起因"><a href="#step1-事情起因" class="headerlink" title="step1 事情起因"></a>step1 事情起因</h3><p>一开始我们买了4G内存，迁移过期还好好的<br>过了几天，就慢慢的涨到了4G，然后我们又扩到了8G，<br>过几天之后，又满了，为了不影响服务，只能开到12G，<br>没想到过了一个周末，12G也快满了。<br>已经到了无法容忍的地步了，必须要分析一下内存里存的是什么了。</p>
-<h3 id="step2-先初步分析一下是什么占了大头"><a href="#step2-先初步分析一下是什么占了大头" class="headerlink" title="step2 先初步分析一下是什么占了大头"></a>step2 先初步分析一下是什么占了大头</h3><p>我们先备份了一份rdb文件回来分析.<br>这里推荐一个开源工具<a href="https://github.com/xueqiu/rdr" target="_blank" rel="noopener">rdr</a><br>这个工具没有redis-rdb-tools那么强大，<br>但是却可以快速分析大概内容，各种类型占比，而且是可视化的<br>rdr原本的下载链接失效了。<a href="https://github.com/gohouse/rdr/releases/tag/v0.1.0" target="_blank" rel="noopener">新的下载链接</a></p>
-<p>运行</p>
-<blockquote>
-<p>./rdr-amd64-v0.1-linux.bin show -p 8080 redis.rdb</p>
-</blockquote>
-<p>生成好之后。我们打开8080端口，就可以看到分析结果了</p>
-<p><img src="/images/NOqC6S.png" alt></p>
-<p>从这里可以看到，我们主要内存才用了3.5G，那么为什么12G都快满了呢，<br>后来和第三方技术交流才知道是内存碎片率太高了，都快250%了。<br>默认的内存回收机制和我们自己搭建的集群有区别。<br>导致内存一直在涨，不释放。</p>
-<p>后面这个事情就交给运维哥哥去处理了～</p>
-<h3 id="step3-虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密"><a href="#step3-虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密" class="headerlink" title="step3 虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密"></a>step3 虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密</h3><p>我们先装个redis-rdb-tools</p>
-<blockquote>
-<p>pip install rdbtools </p>
-</blockquote>
-<p>把rdb文件转成csv文件</p>
-<blockquote>
-<p>rdb -c memory redis.rdb -f redis.csv</p>
-</blockquote>
-<p>看一下csv的格式</p>
-<blockquote>
-<p>less redis.csv</p>
-</blockquote>
-<p>列含义如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">database 数据库</span><br><span class="line">type key类型</span><br><span class="line">key key</span><br><span class="line">size_in_bytes key的内存大小(byte)</span><br><span class="line">encoding value的存储编码形式</span><br><span class="line">num_elements key中的value的个数</span><br><span class="line">len_largest_element key中的value的长度</span><br><span class="line">expiry key过期时间</span><br></pre></td></tr></table></figure>
-
-<p>我们过滤出csv里没有时间的key，放到tmp.log里</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat redis.csv | awk -F <span class="string">','</span> <span class="string">'&#123; if($NF == "")&#123;print $3&#125; &#125;'</span> &gt; tmp.log</span><br></pre></td></tr></table></figure>
-
-<p>然后按同种类型key排序。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat tmp.log | sort | more</span><br></pre></td></tr></table></figure>
-
-<p>现在可以more一下，分析一下这些不会过期的key是啥了。</p>
-<h3 id="step4-END"><a href="#step4-END" class="headerlink" title="step4 END"></a>step4 END</h3><p>忙活了一早上。redis的事情终于可以告一段落了。<br>redis的数据是容易丢的。<br>而且里面的数据可读性也很差。有时候还是msgpack或者pickle处理过的。<br>感觉如果没有过期时间的缓存是很危险的！！！主从出问题容易丢，且长期占内容<br>线上的东西一定要规范好才行，囧</p>
-
+        
     </div>
 
     
@@ -356,7 +310,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Redis/" rel="tag"># Redis</a>
+              <a href="/tags/warehouse/" rel="tag"># warehouse</a>
+            
+              <a href="/tags/presto/" rel="tag"># presto</a>
             
           </div>
         
@@ -366,8 +322,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2018/09/21/新的开始/" rel="next" title="新的开始">
-                  <i class="fa fa-chevron-left"></i> 新的开始
+                <a href="/2020/05/14/warehouse/搭建Sqoop/" rel="next" title="搭建搭建sqoop">
+                  <i class="fa fa-chevron-left"></i> 搭建搭建sqoop
                 </a>
               
             </div>
@@ -376,8 +332,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/08/24/mysql/mysql常用命令整理/" rel="prev" title="mysql常用命令整理">
-                  mysql常用命令整理 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/05/14/warehouse/搭建Hadoop/" rel="prev" title="搭建hadoop">
+                  搭建hadoop <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -413,17 +369,8 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -536,23 +483,6 @@
 
         </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1-事情起因"><span class="nav-number">1.</span> <span class="nav-text">step1 事情起因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2-先初步分析一下是什么占了大头"><span class="nav-number">2.</span> <span class="nav-text">step2 先初步分析一下是什么占了大头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3-虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密"><span class="nav-number">3.</span> <span class="nav-text">step3 虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4-END"><span class="nav-number">4.</span> <span class="nav-text">step4 END</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
@@ -662,7 +592,7 @@
       repo: 'qxsugar.github.io',
       owner: 'qxsugar',
       admin: ['qxsugar'],
-      id: '22221a73c24a974c4fb92782e8d26aa1',
+      id: 'd72aa523b3a9d5011b32a20439a49991',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'

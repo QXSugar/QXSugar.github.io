@@ -11,10 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/新的开始/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/新的开始/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/新的开始/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/新的开始/logo.svg?v=7.3.0" color="#222">
 
 <link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
@@ -55,25 +55,22 @@
   };
 </script>
 
-  <meta name="description" content="公司的大数据平台用的是redash，日常使用感觉真香。redash是开源的。最近想自己搭建一个来玩玩。然后被坑到哭了。记录一下。">
-<meta name="keywords" content="redash">
+  <meta name="description" content="现在很多第三方平台已经实现了大数据架构，开箱即用但是如果一开始就用人家搭建好的工具。那么自己的能力是不会得到成长的。所以决定自己搭建一套单机系统来实践一下">
+<meta name="keywords" content="warehouse">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建REDASH">
-<meta property="og:url" content="https://qxsugar.github.io/2019/08/13/大数据平台/搭建REDASH/index.html">
+<meta property="og:title" content="搭建一套Warehouse">
+<meta property="og:url" content="https://qxsugar.github.io/2020/05/14/warehouse/搭建warehouse/index.html">
 <meta property="og:site_name" content="弎柒-blog">
-<meta property="og:description" content="公司的大数据平台用的是redash，日常使用感觉真香。redash是开源的。最近想自己搭建一个来玩玩。然后被坑到哭了。记录一下。">
+<meta property="og:description" content="现在很多第三方平台已经实现了大数据架构，开箱即用但是如果一开始就用人家搭建好的工具。那么自己的能力是不会得到成长的。所以决定自己搭建一套单机系统来实践一下">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://oss.isugar.wang/9SZdOJ.png">
-<meta property="og:image" content="https://oss.isugar.wang/VGQEFT.png">
-<meta property="og:image" content="https://oss.isugar.wang/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_a0f8b9fc-04b4-4241-8b87-5769991e2758.png">
-<meta property="og:image" content="https://oss.isugar.wang/kavxTW.png">
-<meta property="og:updated_time" content="2020-05-14T06:06:40.115Z">
+<meta property="og:image" content="https://qxsugar.github.io/images/warehouse-framework.png">
+<meta property="og:updated_time" content="2020-05-14T10:01:39.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="搭建REDASH">
-<meta name="twitter:description" content="公司的大数据平台用的是redash，日常使用感觉真香。redash是开源的。最近想自己搭建一个来玩玩。然后被坑到哭了。记录一下。">
-<meta name="twitter:image" content="https://oss.isugar.wang/9SZdOJ.png">
+<meta name="twitter:title" content="搭建一套Warehouse">
+<meta name="twitter:description" content="现在很多第三方平台已经实现了大数据架构，开箱即用但是如果一开始就用人家搭建好的工具。那么自己的能力是不会得到成长的。所以决定自己搭建一套单机系统来实践一下">
+<meta name="twitter:image" content="https://qxsugar.github.io/images/warehouse-framework.png">
   <link rel="alternate" href="/atom.xml" title="弎柒-blog" type="application/atom+xml">
-  <link rel="canonical" href="https://qxsugar.github.io/2019/08/13/大数据平台/搭建REDASH/">
+  <link rel="canonical" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建warehouse/">
 
 
 <script id="page-configurations">
@@ -87,7 +84,7 @@
   };
 </script>
 
-  <title>搭建REDASH | 弎柒-blog</title>
+  <title>搭建一套Warehouse | 弎柒-blog</title>
   
 
 
@@ -237,7 +234,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2019/08/13/大数据平台/搭建REDASH/">
+    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建warehouse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="弎柒">
@@ -251,7 +248,7 @@
       <header class="post-header">
 
         
-          <h2 class="post-title" itemprop="name headline">搭建REDASH
+          <h2 class="post-title" itemprop="name headline">搭建一套Warehouse
 
             
           </h2>
@@ -268,19 +265,11 @@
                 
               
 
-              <time title="Created: 2019-08-13 05:11:00" itemprop="dateCreated datePublished" datetime="2019-08-13T05:11:00+08:00">2019-08-13</time>
+              <time title="Created: 2020-05-14 09:40:06 / Modified: 18:01:39" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-14 14:06:40" itemprop="dateModified" datetime="2020-05-14T14:06:40+08:00">2020-05-14</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -289,7 +278,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/大数据/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/warehouse/" itemprop="url" rel="index"><span itemprop="name">warehouse</span></a></span>
 
                 
                 
@@ -308,31 +297,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>公司的大数据平台用的是redash，<br>日常使用感觉真香。<br>redash是开源的。<br>最近想自己搭建一个来玩玩。<br>然后被坑到哭了。<br>记录一下。    </p>
+        <p>现在很多第三方平台已经实现了大数据架构，开箱即用<br>但是如果一开始就用人家搭建好的工具。<br>那么自己的能力是不会得到成长的。<br>所以决定自己搭建一套单机系统来实践一下</p>
 <a id="more"></a>
 
-<h3 id="redash-地址"><a href="#redash-地址" class="headerlink" title="redash 地址"></a>redash 地址</h3><p><a href="https://github.com/getredash/redash" target="_blank" rel="noopener">地址</a></p>
-<h3 id="step1-第一次失败"><a href="#step1-第一次失败" class="headerlink" title="step1 第一次失败"></a>step1 第一次失败</h3><p>第一次直接在一个1C2G的小菜机上编译，<br>部署方案是按照google找的教程的<br><img src="https://oss.isugar.wang/9SZdOJ.png" alt="pic"></p>
-<p>然后。当我运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
-
-<p>不到5分钟，我的小机器彻底失去了联系<br>CPU100% 内存100%，连ssh都连不上</p>
-<h3 id="step2-第二次失败"><a href="#step2-第二次失败" class="headerlink" title="step2 第二次失败"></a>step2 第二次失败</h3><p>吃了第一次亏之后，<br>想办法搞了一台大机器<br><img src="https://oss.isugar.wang/VGQEFT.png" alt="pic"></p>
-<p>运行命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
-
-<p>然后，又被坑了。pip安装超时，中断了安装<br>囧</p>
-<h3 id="step3-第三次失败"><a href="#step3-第三次失败" class="headerlink" title="step3 第三次失败"></a>step3 第三次失败</h3><p>经历了第三次痛苦的失败后，我机智的在Dockerfile的pip里加上了 </p>
-<blockquote>
-<p>-i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
-</blockquote>
-<p>然后再run</p>
-<blockquote>
-<p>sudo nohub docker-compose -f docker-compose.yml up &gt; up.log &amp;</p>
-</blockquote>
-<p>经过漫长的构建后，终于成功的构建完了<br>然后看启动日志<br><img src="https://oss.isugar.wang/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_a0f8b9fc-04b4-4241-8b87-5769991e2758.png" alt="pic"><br>wtf? Permission Denied!!!，感觉像是docker权限配置问题<br>改配置build，还是失败了。试了好几次。还是失败了</p>
-<h3 id="step4-意外的成功"><a href="#step4-意外的成功" class="headerlink" title="step4 意外的成功"></a>step4 意外的成功</h3><p>最后，只能到github看README.md了，<br>看看有没有有用的信息或者其他人报告问题<br>然后看到有个setup文件夹，里面有个setup.sh<br>抱着试一试的心态，run了一下setup.sh<br>没想到日志刷刷刷。然后就构建好了<br>打开5000端口，熟悉的界面。感动到哭<br>导入一个测试数据源，查一下<br><img src="https://oss.isugar.wang/kavxTW.png" alt="pic"><br>熟悉的界面。感动到哭，搞了差不多一个星期！！！</p>
-<h3 id="step5-END"><a href="#step5-END" class="headerlink" title="step5 END"></a>step5 END</h3><p>github没有看到搭建教程！<br>然后第三方搭建教程都是跑docker-compose!!!<br>有时候真的需要慢下来仔细思考<br>别人的经验不一定是对的！！！</p>
+<h3 id="step1-数据仓库是什么"><a href="#step1-数据仓库是什么" class="headerlink" title="step1 数据仓库是什么"></a>step1 数据仓库是什么</h3><pre><code>数据仓库和数据库是有区别的
+数据仓库主要用来做OLAP用的</code></pre><p><a href="https://www.zhihu.com/question/20623931" target="_blank" rel="noopener">更多区别</a></p>
+<h3 id="step-本次要搭建的数据仓库架构"><a href="#step-本次要搭建的数据仓库架构" class="headerlink" title="step 本次要搭建的数据仓库架构"></a>step 本次要搭建的数据仓库架构</h3><p><img src="/images/warehouse-framework.png" alt="数据仓库架构"></p>
+<h3 id="依赖组件"><a href="#依赖组件" class="headerlink" title="依赖组件"></a>依赖组件</h3><ol>
+<li>hadoop 用来做分布式存储</li>
+<li>hive 用来读取hadoop的hdfs并转换成hsql可查询</li>
+<li>presto 用来调度查询，分布式查询，联表join</li>
+<li>sqoop 用来导入数据源到hadoop</li>
+<li>redash 用来做BI数据展示</li>
+</ol>
 
     </div>
 
@@ -348,7 +325,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/redash/" rel="tag"># redash</a>
+              <a href="/tags/warehouse/" rel="tag"># warehouse</a>
             
           </div>
         
@@ -358,8 +335,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2018/09/21/新的开始/" rel="next" title="新的开始">
-                  <i class="fa fa-chevron-left"></i> 新的开始
+                <a href="/2019/08/27/mysql/mysql查询命中率查询脚本/" rel="next" title="mysql查询命中率查询脚本">
+                  <i class="fa fa-chevron-left"></i> mysql查询命中率查询脚本
                 </a>
               
             </div>
@@ -368,8 +345,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/08/14/redis/一次redis性能分析/" rel="prev" title="一次Redis内存分析记录">
-                  一次Redis内存分析记录 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/05/14/warehouse/搭建Sqoop/" rel="prev" title="搭建搭建sqoop">
+                  搭建搭建sqoop <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -453,7 +430,9 @@
         
           
         
-        <span class="site-state-item-count">4</span>
+          
+        
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -476,7 +455,17 @@
         
           
         
-        <span class="site-state-item-count">4</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -526,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#redash-地址"><span class="nav-number">1.</span> <span class="nav-text">redash 地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step1-第一次失败"><span class="nav-number">2.</span> <span class="nav-text">step1 第一次失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2-第二次失败"><span class="nav-number">3.</span> <span class="nav-text">step2 第二次失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3-第三次失败"><span class="nav-number">4.</span> <span class="nav-text">step3 第三次失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4-意外的成功"><span class="nav-number">5.</span> <span class="nav-text">step4 意外的成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step5-END"><span class="nav-number">6.</span> <span class="nav-text">step5 END</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1-数据仓库是什么"><span class="nav-number">1.</span> <span class="nav-text">step1 数据仓库是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-本次要搭建的数据仓库架构"><span class="nav-number">2.</span> <span class="nav-text">step 本次要搭建的数据仓库架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖组件"><span class="nav-number">3.</span> <span class="nav-text">依赖组件</span></a></li></ol></div>
             
 
           </div>
@@ -642,7 +631,7 @@
       repo: 'qxsugar.github.io',
       owner: 'qxsugar',
       admin: ['qxsugar'],
-      id: '4661b3e507b614c17c478c0bc47c4c17',
+      id: '2ee4ed92c6e5590234e97b07347701ef',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'
