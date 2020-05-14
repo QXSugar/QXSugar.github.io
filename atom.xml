@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>弎柒-blog</title>
+  
+  <subtitle>Brevity is beauty</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://qxsugar.github.io/"/>
+  <updated>2020-05-14T06:06:40.125Z</updated>
+  <id>https://qxsugar.github.io/</id>
+  
+  <author>
+    <name>弎柒</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://qxsugar.github.io/2020/05/14/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/hive%E8%AF%BB%E5%8F%96hdfs/"/>
+    <id>https://qxsugar.github.io/2020/05/14/大数据平台/hive读取hdfs/</id>
+    <published>2020-05-14T06:06:40.125Z</published>
+    <updated>2020-05-14T06:06:40.125Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Hive读取HDFS文件"><a href="#Hive读取HDFS文件" class="headerlink" title="Hive读取HDFS文件"></a>Hive读取HDFS文件</h2><p>新建一张表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table demo (id int, name string, age int) ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;\t&apos; STORED AS TEXTFILE;</span><br></pre></td></tr></table></figure><p>加载数据到表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data inpath &apos;hdfs文件&apos; into table wyp;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Hive读取HDFS文件&quot;&gt;&lt;a href=&quot;#Hive读取HDFS文件&quot; class=&quot;headerlink&quot; title=&quot;Hive读取HDFS文件&quot;&gt;&lt;/a&gt;Hive读取HDFS文件&lt;/h2&gt;&lt;p&gt;新建一张表&lt;/p&gt;
+&lt;figure class=&quot;highl
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://qxsugar.github.io/2020/05/14/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/"/>
+    <id>https://qxsugar.github.io/2020/05/14/大数据平台/大数据平台搭建/</id>
+    <published>2020-05-14T06:06:40.123Z</published>
+    <updated>2020-05-14T06:06:40.123Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://qxsugar.github.io/2020/05/14/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/%E6%90%AD%E5%BB%BAHadoop/"/>
+    <id>https://qxsugar.github.io/2020/05/14/大数据平台/搭建Hadoop/</id>
+    <published>2020-05-14T06:06:40.121Z</published>
+    <updated>2020-05-14T06:06:40.121Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://qxsugar.github.io/2020/05/14/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/%E6%90%AD%E5%BB%BAHive/"/>
+    <id>https://qxsugar.github.io/2020/05/14/大数据平台/搭建Hive/</id>
+    <published>2020-05-14T06:06:40.119Z</published>
+    <updated>2020-05-14T06:06:40.119Z</updated>
+    
+    <content type="html"><![CDATA[<p>schematool -dbType mysql -initSchema</p><p>启动hive报错</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader &apos;bootstrap&apos;)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:413)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:389)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliSessionState.&lt;init&gt;(CliSessionState.java:60)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:705)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683)</span><br><span class="line">at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">at java.base/java.lang.reflect.Method.invoke(Method.java:566)</span><br><span class="line">at org.apache.hadoop.util.RunJar.run(RunJar.java:244)</span><br><span class="line">at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</span><br></pre></td></tr></table></figure><p>发现是java版本问题，java8以后没有了URLClassLoader</p><p>linux 切换 java 版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --config javac</span><br><span class="line">update-alternatives --config java</span><br></pre></td></tr></table></figure><p>选择java8</p><p>修改JAVA_HOME,启动hive<br>遇到错误</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: $&#123;system:java.io.tmpdir%7D/$%7Bsystem:user.name%7D</span><br><span class="line">at org.apache.hadoop.fs.Path.initialize(Path.java:254)</span><br><span class="line">at org.apache.hadoop.fs.Path.&lt;init&gt;(Path.java:212)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.createSessionDirs(SessionState.java:710)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:627)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.beginStart(SessionState.java:591)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:747)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683)</span><br><span class="line">at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">at org.apache.hadoop.util.RunJar.run(RunJar.java:244)</span><br><span class="line">at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</span><br><span class="line">Caused by: java.net.URISyntaxException: Relative path in absolute URI: $&#123;system:java.io.tmpdir%7D/$%7Bsystem:user.name%7D</span><br><span class="line">at java.net.URI.checkPath(URI.java:1823)</span><br><span class="line">at java.net.URI.&lt;init&gt;(URI.java:745)</span><br><span class="line">at org.apache.hadoop.fs.Path.initialize(Path.java:251)</span><br><span class="line">... 12 more</span><br></pre></td></tr></table></figure><p>增加property</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">   &lt;name&gt;system:java.io.tmpdir&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;&#123;&#123;你本地的路径&#125;&#125;&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br></pre></td></tr></table></figure><p>启动成功</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;schematool -dbType mysql -initSchema&lt;/p&gt;
+&lt;p&gt;启动hive报错&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://qxsugar.github.io/2020/05/14/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/%E6%90%AD%E5%BB%BAPresto/"/>
+    <id>https://qxsugar.github.io/2020/05/14/大数据平台/搭建Presto/</id>
+    <published>2020-05-14T06:06:40.117Z</published>
+    <updated>2020-05-14T06:06:40.117Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://qxsugar.github.io/2020/05/14/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/%E6%90%AD%E5%BB%BASqoop/"/>
+    <id>https://qxsugar.github.io/2020/05/14/大数据平台/搭建Sqoop/</id>
+    <published>2020-05-14T06:06:40.113Z</published>
+    <updated>2020-05-14T06:06:40.113Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>mysql查询命中率查询脚本</title>
+    <link href="https://qxsugar.github.io/2019/08/27/mysql/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/"/>
+    <id>https://qxsugar.github.io/2019/08/27/mysql/mysql查询命中率查询脚本/</id>
+    <published>2019-08-27T06:45:26.000Z</published>
+    <updated>2020-05-14T04:08:09.081Z</updated>
+    
+    <content type="html"><![CDATA[<p>当一个mysql的查询量很高时候，有很多种优化方案。<br>分库分表，主从分离等都是不错的选择。<br>主从分离情况下，我们怎么权衡一个DB够不够优秀呢?<br>通常我们会选择查询缓存命中率来作为读库的一个指标。</p><a id="more"></a><p>由于现在DB引擎都是Innodb居多。<br>所以下面都是以Innodb的角度来说。</p><h3 id="MySql-缓存命中率是什么"><a href="#MySql-缓存命中率是什么" class="headerlink" title="MySql 缓存命中率是什么?"></a>MySql 缓存命中率是什么?</h3><p>MySql查询读取磁盘的代价是很高的。<br>所以我们希望MySql尽可能的读取缓存。<br>缓存命中就是查询MySql的时候，直接从内存中得到结果返回。<br>计算公式 缓存命中率 = 读内存次数 / 查询总数。<br>一般来说。我们希望读库的缓存命中率达到 99.95% 以上。</p><h3 id="MySql-缓存参数配置"><a href="#MySql-缓存参数配置" class="headerlink" title="MySql 缓存参数配置"></a>MySql 缓存参数配置</h3><p>查看当前缓存配置大小</p><blockquote><p>show variables like ‘innodb_buffer_pool_size’</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-------------------------+------------+</span><br><span class="line">| Variable_name           | Value      |</span><br><span class="line">+-------------------------+------------+</span><br><span class="line">| innodb_buffer_pool_size | 6442450944 |</span><br><span class="line">+-------------------------+------------+</span><br></pre></td></tr></table></figure><p>控制台修改缓存大小</p><blockquote><p>SET GLOBAL innodb_buffer_pool_size=6442450944;</p></blockquote><p>修改缓存大小方案</p><ol><li>修改mysql配置文件并重启mysql</li><li>在mysql控制台修改配置，同时修改配置，不用重启</li></ol><p>还有其他参数我们用不到</p><h3 id="缓存命中率计算"><a href="#缓存命中率计算" class="headerlink" title="缓存命中率计算"></a>缓存命中率计算</h3><p>根据公式 缓存命中率 = 读内存次数 / 查询总数 我们很容易算出命中率<br>读内存次数 = “Innodb_buffer_pool_reads”<br>查询总次数 = “Innodb_buffer_pool_read_requests”</p><blockquote><p>show status like ‘%pool_read%’</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+---------------------------------------+-------------+</span><br><span class="line">| Variable_name                         | Value       |</span><br><span class="line">+---------------------------------------+-------------+</span><br><span class="line">| Innodb_buffer_pool_read_requests      | 42766114022 |</span><br><span class="line">| Innodb_buffer_pool_reads              | 566498466   |</span><br><span class="line">+---------------------------------------+-------------+</span><br></pre></td></tr></table></figure><p>但是这两个值是总的数量，并不是一段时间内的，参考价值不大，所以我们要取一段时间内的差值来算<br>命中率 = (第二次读内存次数 - 第一次读内存次数) / (第二次查询总数 - 第一次查询总数)</p><p>算了好多次，都是重复性的，有点繁琐，所以写了个脚本来算</p><blockquote><p> bash &lt;(curl -s <a href="https://www.isugar.wang/tools/mysql_hit_rate.sh" target="_blank" rel="noopener">https://www.isugar.wang/tools/mysql_hit_rate.sh</a>)</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MYSQL缓存命中查询脚本</span><br><span class="line">请输入 mysql 用户/root              xxx</span><br><span class="line">请输入 mysql 密码/&apos;&apos;                xxx</span><br><span class="line">请输入 mysql 域名/localhost</span><br><span class="line">请输入 mysql 端口/3306</span><br><span class="line">请输入       间隔/60s               10</span><br><span class="line">开始提取打点信息</span><br><span class="line">第一次打点信息 请求数: 42766927561, 读磁盘数: 566510284</span><br><span class="line">休眠10s</span><br><span class="line">第二次打点信息 请求数: 42767040750, 读磁盘数: 566511295</span><br><span class="line">命中率: 99.1068</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;当一个mysql的查询量很高时候，有很多种优化方案。&lt;br&gt;分库分表，主从分离等都是不错的选择。&lt;br&gt;主从分离情况下，我们怎么权衡一个DB够不够优秀呢?&lt;br&gt;通常我们会选择查询缓存命中率来作为读库的一个指标。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://qxsugar.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://qxsugar.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql常用命令整理</title>
+    <link href="https://qxsugar.github.io/2019/08/24/mysql/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/"/>
+    <id>https://qxsugar.github.io/2019/08/24/mysql/mysql常用命令整理/</id>
+    <published>2019-08-23T21:11:00.000Z</published>
+    <updated>2020-05-14T04:08:09.081Z</updated>
+    
+    <content type="html"><![CDATA[<p>整理一下最近常用的mysql语句</p><a id="more"></a><h4 id="MySql-锁全表"><a href="#MySql-锁全表" class="headerlink" title="MySql 锁全表"></a>MySql 锁全表</h4><p>一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读</p><ol><li><p>上锁操作</p><blockquote><p>FLUSH TABLES WITH READ LOCK</p></blockquote></li><li><p>解锁操作</p><blockquote><p>UNLOCK TABLES</p></blockquote></li></ol><h4 id="MySql备份"><a href="#MySql备份" class="headerlink" title="MySql备份"></a>MySql备份</h4><ol><li><p>备份库中的表结构</p><blockquote><p>mysqldump -uxxx -pxxx -d db &gt; db_bk.sq</p></blockquote></li><li><p>备份某一张表</p><blockquote><p>mysqldump -uxxx -pxxx db tbl &gt; bk.sql</p></blockquote></li><li><p>按条件备份一张表</p><blockquote><p>mysqldump -uxxx -pxxx db tbl -w ‘id=1’ &gt; bk.sql</p></blockquote></li><li><p>恢复    </p><blockquote><p>mysql -uxxx -pxxx &lt; bk.sql</p></blockquote></li></ol><h4 id="Mysql-Rename-操作"><a href="#Mysql-Rename-操作" class="headerlink" title="Mysql Rename 操作"></a>Mysql Rename 操作</h4><ol><li><p>移动表，把表从一个库移动到另一个库</p><blockquote><p>rename table db1.tbl1 to db2.tbl2</p></blockquote></li><li><p>修改表名字</p></li></ol><blockquote><p>rename table old_name to new_name</p></blockquote><ol start="3"><li><p>替换表 t1 — t2</p><blockquote><p>rename table t1 to tmp, t2 to t1, tmp to t2;</p></blockquote></li></ol><h4 id="MySql-事务等级"><a href="#MySql-事务等级" class="headerlink" title="MySql 事务等级"></a>MySql 事务等级</h4><ol><li>查看当前事务等级</li></ol><blockquote><p>select @@global.tx_isolation,@@tx_isolation;</p></blockquote><ol><li><p>修改成读未提交 RU</p><blockquote><p>set [global | session] transaction isolation level read uncommitted;</p></blockquote></li><li><p>修改成读已提交 RC</p><blockquote><p>set  [global | session] transaction isolation level read committed;</p></blockquote></li><li><p>修改成可重复读</p><blockquote><p>set  [global | session] transaction isolation level repeatable read;</p></blockquote></li><li><p>修改成窜行</p><blockquote><p>set  [global | session] transaction isolation level serializable;</p></blockquote></li></ol><p>[global | session] 这个修改对当前session生效还是全局生效</p><h4 id="MySql-修改表库引擎"><a href="#MySql-修改表库引擎" class="headerlink" title="MySql 修改表库引擎"></a>MySql 修改表库引擎</h4><ol><li><p>修改成Innodb</p><blockquote><p>alter table xxx engine=innodb;</p></blockquote></li></ol><h3 id="MySql-autocommit-配置"><a href="#MySql-autocommit-配置" class="headerlink" title="MySql autocommit 配置"></a>MySql autocommit 配置</h3><ol><li><p>查看自动提交开关</p><blockquote><p>show [global | session] variables like ‘autocommit’;</p></blockquote></li><li><p>设置自动提交开关</p><blockquote><p>set [global | session] autocommit = [0 | 1]</p></blockquote></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;整理一下最近常用的mysql语句&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://qxsugar.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://qxsugar.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一次Redis内存分析记录</title>
+    <link href="https://qxsugar.github.io/2019/08/14/redis/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/"/>
+    <id>https://qxsugar.github.io/2019/08/14/redis/一次redis性能分析/</id>
+    <published>2019-08-13T16:00:00.000Z</published>
+    <updated>2020-05-14T04:08:09.082Z</updated>
+    
+    <content type="html"><![CDATA[<p>公司用的是Redis机器。<br>最近迁移了一次机房。<br>顺便用上了第三方的Redis存储。<br>然后，过了不久，redis内存就满了。</p><a id="more"></a><h3 id="step1-事情起因"><a href="#step1-事情起因" class="headerlink" title="step1 事情起因"></a>step1 事情起因</h3><p>一开始我们买了4G内存，迁移过期还好好的<br>过了几天，就慢慢的涨到了4G，然后我们又扩到了8G，<br>过几天之后，又满了，为了不影响服务，只能开到12G，<br>没想到过了一个周末，12G也快满了。<br>已经到了无法容忍的地步了，必须要分析一下内存里存的是什么了。</p><h3 id="step2-先初步分析一下是什么占了大头"><a href="#step2-先初步分析一下是什么占了大头" class="headerlink" title="step2 先初步分析一下是什么占了大头"></a>step2 先初步分析一下是什么占了大头</h3><p>我们先备份了一份rdb文件回来分析.<br>这里推荐一个开源工具<a href="https://github.com/xueqiu/rdr" target="_blank" rel="noopener">rdr</a><br>这个工具没有redis-rdb-tools那么强大，<br>但是却可以快速分析大概内容，各种类型占比，而且是可视化的<br>rdr原本的下载链接失效了。<a href="https://github.com/gohouse/rdr/releases/tag/v0.1.0" target="_blank" rel="noopener">新的下载链接</a></p><p>运行</p><blockquote><p>./rdr-amd64-v0.1-linux.bin show -p 8080 redis.rdb</p></blockquote><p>生成好之后。我们打开8080端口，就可以看到分析结果了<br><img src="https://oss.isugar.wang/NOqC6S.png" alt="pic"></p><p>从这里可以看到，我们主要内存才用了3.5G，那么为什么12G都快满了呢，<br>后来和第三方技术交流才知道是内存碎片率太高了，都快250%了。<br>默认的内存回收机制和我们自己搭建的集群有区别。<br>导致内存一直在涨，不释放。</p><p>后面这个事情就交给运维哥哥去处理了～</p><h3 id="step3-虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密"><a href="#step3-虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密" class="headerlink" title="step3 虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密"></a>step3 虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密</h3><p>我们先装个redis-rdb-tools</p><blockquote><p>pip install rdbtools </p></blockquote><p>把rdb文件转成csv文件</p><blockquote><p>rdb -c memory redis.rdb -f redis.csv</p></blockquote><p>看一下csv的格式</p><blockquote><p>less redis.csv</p></blockquote><p>列含义如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">database 数据库</span><br><span class="line">type key类型</span><br><span class="line">key key</span><br><span class="line">size_in_bytes key的内存大小(byte)</span><br><span class="line">encoding value的存储编码形式</span><br><span class="line">num_elements key中的value的个数</span><br><span class="line">len_largest_element key中的value的长度</span><br><span class="line">expiry key过期时间</span><br></pre></td></tr></table></figure><p>我们过滤出csv里没有时间的key，放到tmp.log里</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat redis.csv | awk -F <span class="string">','</span> <span class="string">'&#123; if($NF == "")&#123;print $3&#125; &#125;'</span> &gt; tmp.log</span><br></pre></td></tr></table></figure><p>然后按同种类型key排序。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat tmp.log | sort | more</span><br></pre></td></tr></table></figure><p>现在可以more一下，分析一下这些不会过期的key是啥了。</p><h3 id="step4-END"><a href="#step4-END" class="headerlink" title="step4 END"></a>step4 END</h3><p>忙活了一早上。redis的事情终于可以告一段落了。<br>redis的数据是容易丢的。<br>而且里面的数据可读性也很差。有时候还是msgpack或者pickle处理过的。<br>感觉如果没有过期时间的缓存是很危险的！！！主从出问题容易丢，且长期占内容<br>线上的东西一定要规范好才行，囧</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;公司用的是Redis机器。&lt;br&gt;最近迁移了一次机房。&lt;br&gt;顺便用上了第三方的Redis存储。&lt;br&gt;然后，过了不久，redis内存就满了。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Redis" scheme="https://qxsugar.github.io/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="https://qxsugar.github.io/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建REDASH</title>
+    <link href="https://qxsugar.github.io/2019/08/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0/%E6%90%AD%E5%BB%BAREDASH/"/>
+    <id>https://qxsugar.github.io/2019/08/13/大数据平台/搭建REDASH/</id>
+    <published>2019-08-12T21:11:00.000Z</published>
+    <updated>2020-05-14T06:06:40.115Z</updated>
+    
+    <content type="html"><![CDATA[<p>公司的大数据平台用的是redash，<br>日常使用感觉真香。<br>redash是开源的。<br>最近想自己搭建一个来玩玩。<br>然后被坑到哭了。<br>记录一下。    </p><a id="more"></a><h3 id="redash-地址"><a href="#redash-地址" class="headerlink" title="redash 地址"></a>redash 地址</h3><p><a href="https://github.com/getredash/redash" target="_blank" rel="noopener">地址</a></p><h3 id="step1-第一次失败"><a href="#step1-第一次失败" class="headerlink" title="step1 第一次失败"></a>step1 第一次失败</h3><p>第一次直接在一个1C2G的小菜机上编译，<br>部署方案是按照google找的教程的<br><img src="https://oss.isugar.wang/9SZdOJ.png" alt="pic"></p><p>然后。当我运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure><p>不到5分钟，我的小机器彻底失去了联系<br>CPU100% 内存100%，连ssh都连不上</p><h3 id="step2-第二次失败"><a href="#step2-第二次失败" class="headerlink" title="step2 第二次失败"></a>step2 第二次失败</h3><p>吃了第一次亏之后，<br>想办法搞了一台大机器<br><img src="https://oss.isugar.wang/VGQEFT.png" alt="pic"></p><p>运行命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure><p>然后，又被坑了。pip安装超时，中断了安装<br>囧</p><h3 id="step3-第三次失败"><a href="#step3-第三次失败" class="headerlink" title="step3 第三次失败"></a>step3 第三次失败</h3><p>经历了第三次痛苦的失败后，我机智的在Dockerfile的pip里加上了 </p><blockquote><p>-i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p></blockquote><p>然后再run</p><blockquote><p>sudo nohub docker-compose -f docker-compose.yml up &gt; up.log &amp;</p></blockquote><p>经过漫长的构建后，终于成功的构建完了<br>然后看启动日志<br><img src="https://oss.isugar.wang/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_a0f8b9fc-04b4-4241-8b87-5769991e2758.png" alt="pic"><br>wtf? Permission Denied!!!，感觉像是docker权限配置问题<br>改配置build，还是失败了。试了好几次。还是失败了</p><h3 id="step4-意外的成功"><a href="#step4-意外的成功" class="headerlink" title="step4 意外的成功"></a>step4 意外的成功</h3><p>最后，只能到github看README.md了，<br>看看有没有有用的信息或者其他人报告问题<br>然后看到有个setup文件夹，里面有个setup.sh<br>抱着试一试的心态，run了一下setup.sh<br>没想到日志刷刷刷。然后就构建好了<br>打开5000端口，熟悉的界面。感动到哭<br>导入一个测试数据源，查一下<br><img src="https://oss.isugar.wang/kavxTW.png" alt="pic"><br>熟悉的界面。感动到哭，搞了差不多一个星期！！！</p><h3 id="step5-END"><a href="#step5-END" class="headerlink" title="step5 END"></a>step5 END</h3><p>github没有看到搭建教程！<br>然后第三方搭建教程都是跑docker-compose!!!<br>有时候真的需要慢下来仔细思考<br>别人的经验不一定是对的！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;公司的大数据平台用的是redash，&lt;br&gt;日常使用感觉真香。&lt;br&gt;redash是开源的。&lt;br&gt;最近想自己搭建一个来玩玩。&lt;br&gt;然后被坑到哭了。&lt;br&gt;记录一下。    &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="大数据" scheme="https://qxsugar.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="redash" scheme="https://qxsugar.github.io/tags/redash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>新的开始</title>
+    <link href="https://qxsugar.github.io/2018/09/21/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
+    <id>https://qxsugar.github.io/2018/09/21/新的开始/</id>
+    <published>2018-09-21T03:05:54.000Z</published>
+    <updated>2020-05-14T04:08:09.083Z</updated>
+    
+    <content type="html"><![CDATA[<p>给自己挖个坑记录一下自己平时学习笔记<br>和记录一下自己的成长</p><a id="more"></a><h3 id="step1-加油～"><a href="#step1-加油～" class="headerlink" title="step1 加油～"></a>step1 加油～</h3><p><img src="https://oss.isugar.wang/5UAGvJ.jpg" alt="pic"></p><h3 id="step2-天道酬勤-总有一天会蜕变的"><a href="#step2-天道酬勤-总有一天会蜕变的" class="headerlink" title="step2 天道酬勤, 总有一天会蜕变的"></a>step2 天道酬勤, 总有一天会蜕变的</h3><h3 id="step3-感觉自己好懒啊。2018都快过去了才写了那么一点东西"><a href="#step3-感觉自己好懒啊。2018都快过去了才写了那么一点东西" class="headerlink" title="step3 感觉自己好懒啊。2018都快过去了才写了那么一点东西"></a>step3 感觉自己好懒啊。2018都快过去了才写了那么一点东西</h3><h3 id="step4-卧槽，2019快完了。还没写东西。。。"><a href="#step4-卧槽，2019快完了。还没写东西。。。" class="headerlink" title="step4 卧槽，2019快完了。还没写东西。。。"></a>step4 卧槽，2019快完了。还没写东西。。。</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;给自己挖个坑记录一下自己平时学习笔记&lt;br&gt;和记录一下自己的成长&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="hexo" scheme="https://qxsugar.github.io/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="https://qxsugar.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>Sugar</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <style>
+        html body {
+            margin: 0 auto;
+            background: #fafafa;
+            height: 100%;
+        }
+        #app {
+            font-family: 'Avenir', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+        }
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id=app v-cloak>
+    <v-app>
+        <v-dialog v-model="showChat" width="400">
+            <v-card>
+                <v-card-title class="headline grey lighten-2" primary-title>
+                    加个微信吗?
+                </v-card-title>
+                <v-img>
+                    <img class="wx-qr" width="400" src="src/my-wechat-qr.gif">
+                </v-img>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+
+                    <v-btn color="orange darken-1" flat="flat" @click="showChat = false">
+                        CANCEL
+                    </v-btn>
+
+                    <v-btn color="orange darken-1" depressed dark @click="showChat = false">
+                        OK
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
+        <v-container grid-list-lg fluid>
+            <v-content>
+                <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                        <v-layout column>
+                            <!--about me-->
+                            <v-flex xs12>
+                                <v-card>
+                                    <v-img src="src/img-1.jpg" height="300px">
+                                        <v-layout column fill-height>
+                                            <v-card-title class="white--text">
+                                                <div class="headline pl-2 pt-2">ABOUT ME</div>
+                                            </v-card-title>
+                                            <v-spacer></v-spacer>
+
+                                            <v-card-title class="white--text">
+                                                <div class="title pl-2 pt-2">黄景开(Sugar Wong)</div>
+                                            </v-card-title>
+                                        </v-layout>
+                                    </v-img>
+
+                                    <v-list>
+                                        <v-list-tile @click="">
+                                            <v-list-tile-action>
+                                                <v-icon color="indigo">phone</v-icon>
+                                            </v-list-tile-action>
+                                            <v-list-tile-content>
+                                                <v-list-tile-title>13680315409</v-list-tile-title>
+                                                <v-list-tile-sub-title>Mobile</v-list-tile-sub-title>
+                                            </v-list-tile-content>
+                                        </v-list-tile>
+                                        <v-divider inset></v-divider>
+
+                                        <v-list-tile @click="">
+                                            <v-list-tile-action>
+                                                <v-icon color="indigo">mail</v-icon>
+                                            </v-list-tile-action>
+                                            <v-list-tile-content>
+                                                <v-list-tile-title>qxsugar@gmail.com</v-list-tile-title>
+                                                <v-list-tile-sub-title>Personal</v-list-tile-sub-title>
+                                            </v-list-tile-content>
+                                        </v-list-tile>
+                                        <v-divider inset></v-divider>
+
+                                        <v-list-tile @click="">
+                                            <v-list-tile-action>
+                                                <v-icon color="indigo">school</v-icon>
+                                            </v-list-tile-action>
+                                            <v-list-tile-content>
+                                                <v-list-tile-title>广东科学技术职业学院</v-list-tile-title>
+                                                <v-list-tile-sub-title>游戏软件</v-list-tile-sub-title>
+                                            </v-list-tile-content>
+                                        </v-list-tile>
+                                        <v-divider inset></v-divider>
+
+                                        <v-list-tile @click="">
+                                            <v-list-tile-action>
+                                                <v-icon color="indigo">location_on</v-icon>
+                                            </v-list-tile-action>
+
+                                            <v-list-tile-content>
+                                                <v-list-tile-title>广东珠海</v-list-tile-title>
+                                                <v-list-tile-sub-title>香洲区</v-list-tile-sub-title>
+                                            </v-list-tile-content>
+                                        </v-list-tile>
+                                    </v-list>
+
+                                    <v-card-actions>
+                                        <v-tooltip top>
+                                            <v-btn slot="activator" flat color="orange" @click="showChat = true">
+                                                <v-icon>chat</v-icon>
+                                            </v-btn>
+                                            <span>联系我</span>
+                                        </v-tooltip>
+
+                                        <v-tooltip top>
+                                            <v-btn flat slot="activator" color="orange" @click="toMail">
+                                                <v-icon>email</v-icon>
+                                            </v-btn>
+                                            <span>发邮件</span>
+                                        </v-tooltip>
+
+                                        <v-spacer></v-spacer>
+                                        <v-tooltip top>
+                                            <v-btn depressed dark slot="activator" depressed dark color="orange"
+                                                   @click="toGithub">Github
+                                            </v-btn>
+                                            <span>我的github</span>
+                                        </v-tooltip>
+
+                                    </v-card-actions>
+                                </v-card>
+                            </v-flex>
+
+                            <!--技能树-->
+                            <v-flex xs12>
+                                <v-card>
+                                    <v-card-title class="title grey lighten-2">
+                                        技能树
+                                    </v-card-title>
+                                    <v-img class="white--text">
+                                        <img src="src/skill-tree.png"
+                                             style="width: 100%; height: 100%"/>
+                                    </v-img>
+                                    <v-card-actions>
+                                        <v-tooltip top>
+                                            <v-btn slot="activator" @click="toQLWithMe" flat color="orange">他的战绩</v-btn>
+                                            <span>查看我的战绩</span>
+                                        </v-tooltip>
+
+                                        <v-spacer></v-spacer>
+
+                                        <v-tooltip top>
+                                            <v-btn slot="activator" @click="toQLIndex" depressed dark color="orange">
+                                                试一试
+                                            </v-btn>
+                                            <span>PK一下 ？</span>
+                                        </v-tooltip>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-flex>
+
+                            <!--自我描述-->
+                            <v-flex xs12>
+                                <v-card>
+                                    <v-card-title class="title grey lighten-2">
+                                        自我描述
+                                    </v-card-title>
+
+                                    <v-card-text>
+                                        <v-list v-for="(item, idx) in infoList" v-bind:key="idx">
+                                            <v-list-tile @click="actionInfo(item.action)">
+                                                <v-list-tile-content>
+                                                    <v-list-tile-title>
+                                                        {{idx + 1}}. {{item.title}}
+                                                    </v-list-tile-title>
+                                                    <v-list-tile-sub-title>
+                                                        {{item.content}}
+                                                    </v-list-tile-sub-title>
+                                                </v-list-tile-content>
+
+                                                <v-list-tile-action>
+                                                    <v-icon>chevron_right</v-icon>
+                                                </v-list-tile-action>
+                                            </v-list-tile>
+
+                                        </v-list>
+                                    </v-card-text>
+                                </v-card>
+                            </v-flex>
+
+                            <!--// 经验-->
+                            <v-flex xs12 sm6>
+                                <v-stepper v-model="stepDefault" vertical>
+                                    <v-stepper-header>
+                                        <v-layout>
+                                            <v-flex xs12 align-center layout>
+                                                <div class="headline pl-4">
+                                                    EXPERIENCE
+                                                </div>
+                                            </v-flex>
+                                        </v-layout>
+                                    </v-stepper-header>
+
+                                    <div v-for="(step, idx) in steps" :key="idx">
+                                        <v-stepper-step editable :complete="true" :step="step.step">
+                                            {{step.time}}
+                                            <div class="title">{{step.name}}</div>
+                                            <small>{{step.tags.join(" ")}}</small>
+                                        </v-stepper-step>
+
+                                        <v-stepper-content :step="step.step">
+                                            <v-card flat>
+                                                <v-card-text>
+                                                    <v-list>
+                                                        <v-list-tile-content v-for="(line, lineIdx) in step.list"
+                                                                             v-bind:key="lineIdx">
+                                                            <v-list-tile-title>
+                                                                {{lineIdx + 1}}. {{line}}
+                                                            </v-list-tile-title>
+                                                        </v-list-tile-content>
+                                                    </v-list>
+                                                </v-card-text>
+                                            </v-card>
+                                            <v-btn class="left" depressed
+                                                   @click="stepDefault = (stepDefault - 1 + steps.length)%3">
+                                                <v-icon left dark>navigate_before</v-icon>
+                                                PRE
+                                            </v-btn>
+
+                                            <v-btn class="right" depressed dark color="orange"
+                                                   @click="stepDefault = (stepDefault + 1 + steps.length)%3">
+                                                NEXT
+                                                <v-icon right dark>navigate_next</v-icon>
+                                            </v-btn>
+                                        </v-stepper-content>
+                                    </div>
+                                </v-stepper>
+                            </v-flex>
+
+                        </v-layout>
+                    </v-flex>
+
+                    <v-flex xs12 sm6>
+                        <v-layout column>
+                            <!--技能-->
+                            <v-flex xs12>
+                                <v-card>
+                                    <v-card-title class="title grey lighten-2">
+                                        技能清单
+                                    </v-card-title>
+
+                                    <v-card-text>
+                                        <v-list two-line subheader v-for="(catalog, idx) in skillCatalog"
+                                                v-bind:key="idx">
+
+                                            <v-subheader>{{catalog.name}}</v-subheader>
+                                            <v-list-tile avatar v-for="(skill, skillIdx) in catalog.skills"
+                                                         v-bind:key="skillIdx"
+                                                         @click="actionSkill(skill.action)">
+                                                <v-list-tile-avatar>
+                                                    <img :src="skill.icon"/>
+                                                </v-list-tile-avatar>
+                                                <v-list-tile-content>
+                                                    <v-list-tile-title>
+                                                        {{skill.title}}
+                                                    </v-list-tile-title>
+                                                    <v-list-tile-sub-title>
+                                                        {{skill.content}}
+                                                    </v-list-tile-sub-title>
+                                                </v-list-tile-content>
+                                                <v-list-tile-action>
+                                                    <v-icon>chevron_right</v-icon>
+                                                </v-list-tile-action>
+                                            </v-list-tile>
+                                            <v-divider v-if="idx !== skillCatalog.length-1"></v-divider>
+                                        </v-list>
+                                    </v-card-text>
+                                </v-card>
+                            </v-flex>
+
+                            <!--apps-->
+                            <v-flex xs12>
+                                <v-card>
+                                    <v-card-title class="title grey lighten-2">
+                                        App列表
+                                    </v-card-title>
+
+                                    <v-card-text>
+                                        <v-list two-line subheader v-for="(app, idx) in apps" v-bind:key="idx">
+
+                                            <v-list-tile @click="actionApp(app.action)">
+                                                <v-list-tile-avatar v-if="app.icon">
+                                                    <img :src="app.icon"/>
+                                                </v-list-tile-avatar>
+                                                <v-list-tile-content>
+                                                    <v-list-tile-title>
+                                                        {{app.title}}
+                                                    </v-list-tile-title>
+                                                    <v-list-tile-sub-title>
+                                                        {{app.content}}
+                                                    </v-list-tile-sub-title>
+                                                </v-list-tile-content>
+                                                <v-list-tile-action>
+                                                    <v-icon>chevron_right</v-icon>
+                                                </v-list-tile-action>
+                                            </v-list-tile>
+
+                                            <v-divider v-if="idx !== apps.length-1"></v-divider>
+                                        </v-list>
+                                    </v-card-text>
+                                </v-card>
+                            </v-flex>
+
+                            <!--状态-->
+                            <v-flex xs12>
+                                <v-card>
+                                    <v-card-title class="title grey lighten-2">
+                                        目前状态
+                                    </v-card-title>
+
+                                    <v-card-title primary-title>
+                                        <div>
+                                            <h3 class="headline">{{state.title}}</h3>
+                                            <div>{{state.content}}</div>
+                                        </div>
+                                    </v-card-title>
+                                </v-card>
+                            </v-flex>
+                        </v-layout>
+                    </v-flex>
+
+                </v-layout>
+            </v-content>
+        </v-container>
+
+        <v-footer dark>
+            <v-flex primary lighten-2 py-3 text-xs-center white--text xs12>
+                <v-tooltip top>
+                    <div slot="activator">&copy;2018 — <strong>Sugar Wong</strong></div>
+                    <span>自豪的引用vuetify</span>
+                </v-tooltip>
+            </v-flex>
+        </v-footer>
+    </v-app>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+
+<script>
+    const app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                showChat: false,
+                skillCatalog: [
+                    {
+            ht            name: "工具",
+                        skills: [
+                            {
+                                icon: "src/logo-git.png",
+                                title: "GIT",
+                                content: "git 命令操作，分支管理，tag管理",
+                                action: "action-git"
+                            },
+                            {
+                                icon: "src/logo-markdown.png",
+                                title: "Markdown",
+                                content: "Markdown 语法，编写 README.md 文档",
+                                action: "action-markdown"
+                            },
+                            {
+                                icon: "src/logo-vim.png",
+                                title: "VIM",
+                                content: "vim命令操作，远程改代码，修改服务器配置等",
+                                action: "action-vim"
+                            },
+                            {
+                                icon: "src/logo-ssh.jpg",
+                                title: "SSH",
+                                content: "SSH动态端口转发，远程端口转发，本地端口转发",
+                                action: "action-ssh"
+                            },
+                            {
+                                icon: "src/logo-nginx.png",
+                                title: "NGINX",
+                                content: "NGINX反向代理配置, https证书配置",
+                                action: "action-nginx"
+                            },
+                            {
+                                icon: "src/logo-proxy.png",
+                                title: "mintproxy",
+                                content: "熟悉常用抓包软件。Charles，mintproxy， 代理转包。透明代理抓包",
+                                action: "action-proxy"
+                            }
+                        ]
+                    },
+                    {
+                        name: "平台",
+                        skills: [
+                            {
+                                icon: "src/logo-linux.png",
+                                title: "LINUX",
+                                content: "熟悉ubuntu桌面版，服务器版，大学期间用Ubuntu，有自己的Ubuntu服务器",
+                                action: "action-linux"
+                            },
+                            {
+                                icon: "src/logo-reg.jpg",
+                                title: "REG",
+                                content: "基本正则表达式用法",
+                                action: "action-reg"
+                            },
+                            {
+                                icon: "src/logo-ide.png",
+                                title: "IDE",
+                                content: "XCode, AndroidStudio, Pycharm, Webstorm等工具, pip, npm, cocospod等包管理工具",
+                                action: "action-ide"
+                            }
+                        ]
+                    },
+                    {
+                        name: "语言&框架",
+                        skills: [
+                            {
+                                icon: "src/logo-nodejs.png",
+                                name: "NODEJS",
+                                content: "熟悉nodejs开发，mongodb, experss",
+                                action: "action-nodejs"
+                            },
+                            {
+                                icon: "src/logo-android.png",
+                                title: "ANDROID",
+                                content: "kotlin&java Android 开发",
+                                action: "action-android"
+                            },
+                            {
+                                icon: "src/logo-swift.png",
+                                title: "SWIFT",
+                                content: "熟悉IOS基本开发，swift，有ios应用上架简历。ios证书管理等",
+                                action: "action-swift"
+                            },
+                            {
+                                icon: "src/logo-vue.jpeg",
+                                title: "VUE",
+                                content: "VUE基本开发，vuetify，element开发等",
+                                action: "action-vue"
+                            },
+                            {
+                                icon: "src/logo-python.png",
+                                title: "flask&tornado",
+                                content: "python 后台开发, restfull Api 开发",
+                                action: "action-tornado"
+                            },
+                            {
+                                icon: "src/logo-odoo.png",
+                                title: "odoo",
+                                content: "ODOO 企业ERP模块修改和定制, 功能定制",
+                                action: "action-odoo"
+                            },
+                        ]
+                    }
+                ],
+                infoList: [
+                    {
+                        title: "学习能力强, 上手快!",
+                        content: "半个月掌握ios基本开发, 一个月掌握odoo模块开发",
+                        action: "",
+                    },
+                    {
+                        title: "对安全技术敏感!",
+                        content: "通过了很多ctf题目和挑战",
+                        action: "",
+                    },
+                    {
+                        title: "数据结构和算法!",
+                        content: "在校期间，参加过很多算法比赛。(蓝桥杯省赛一等奖...等)",
+                        action: "",
+                    },
+                    {
+                        title: "责任心强。容易相处!",
+                        content: "卖个萌!!",
+                        action: "",
+                    },
+                ],
+                apps: [
+                    {
+                        icon: "src/logo-l.png",
+                        title: "PyLive",
+                        content: "一个抓取直播App播放地址的py脚本",
+                        action: "https://github.com/qxsugar/py-live"
+                    },
+                    {
+                        icon: "src/logo-cx-capture.png",
+                        title: "CX Capture(ios)",
+                        content: "一个二维码扫描App,swift独立完成",
+                        action: "https://itunes.apple.com/cn/app/cx-capture/id1088854581?mt=8"
+                    },
+                    {
+                        icon: "src/logo-lenovo-x.png",
+                        title: "Lenovo X",
+                        content: "联想的一个开会App，基与target定制",
+                        action: "https://itunes.apple.com/cn/app/lenovo-x/id1332715093?mt=8"
+                    },
+                    {
+                        icon: "src/logo-aruba.png",
+                        title: "Aruba Connect",
+                        content: "Aruba的一个开会App，基与target定制",
+                        action: "https://itunes.apple.com/cn/app/aruba-connect/id1332633576?mt=8"
+                    },
+                    {
+                        icon: "src/logo-check-point.png",
+                        title: "Check Point Events",
+                        content: "Check Point 的一个开会App，基与target定制",
+                        action: "https://itunes.apple.com/cn/app/check-point-events/id1188984477?mt=8"
+                    },
+                ],
+                stepDefault: 2,
+                steps: [
+                    {
+                        step: 0,
+                        time: "2016.8-2017.8",
+                        name: "珠海沃德尔软件科技有限公司",
+                        tags: ['Android'],
+                        state: false,
+                        list: [
+                            "接入第三方地图，反射修改地图UI",
+                            "用python脚本，批量整理Android Style(XML)文件，适配平板",
+                            "接入第三方IM SDK，实现即时聊天",
+                            "接入第三方视频会话模块，实现视频通讯功能",
+                            "编写了一套通用媒体操作库，(录制视频，录制语音，选择视频，选择图片，选择位置)",
+                            "参与实现推送，Mqtt，用Rx订阅模式，Kotlin实现"
+                        ]
+                    },
+                    {
+                        step: 1,
+                        time: "2017.7-2018.3",
+                        name: "珠海轼域网络科技有限公司",
+                        tags: ['Android', "IOS"],
+                        state: false,
+                        list: [
+                            "维护Android项目，开发新模块",
+                            "用Meridian Sdk实现Find Friend功能(定位)",
+                            "把混合框架的App用swift重写，并上架",
+                            "维护IOS项目，开发新模块",
+                            "App开发, 国外同事沟通"
+                        ]
+                    },
+                    {
+                        step: 2,
+                        time: "2018.3-NOW()",
+                        name: "柏妃科技（深圳）有限公司",
+                        tags: ['PYTHON', "VUE"],
+                        state: false,
+                        list: [
+                            "odoo模块开发，shop, pos of sale, repair",
+                            "VUE 页面编写，vue, vuetify, element-ui"
+                        ]
+                    }
+                ],
+                state: {
+                    title: "就职ing",
+                    content: "暂不打算换工作！"
+                }
+            }
+        },
+        mounted() {
+        },
+        methods: {
+            toQLWithMe() {
+                window.open("http://www.qlcoder.com/rank?name=sugar")
+            },
+            toQLIndex() {
+                window.open("http://www.qlcoder.com")
+            },
+            toMail() {
+                window.location.href = "mailto:qxsugar@gmail.com"
+            },
+            toGithub() {
+                window.open("https://github.com/qxsugar")
+            },
+            actionSkill(action) {
+            },
+            actionInfo(action) {
+            },
+            actionApp(action) {
+                window.open(action)
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
