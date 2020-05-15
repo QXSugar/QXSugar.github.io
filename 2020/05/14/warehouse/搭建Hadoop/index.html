@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="弎柒-blog">
+  <meta name="description" content="本篇介绍如何在单机搭建一个hadoop系统">
 <meta name="keywords" content="warehouse,hadoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建hadoop">
 <meta property="og:url" content="https://qxsugar.github.io/2020/05/14/warehouse/搭建Hadoop/index.html">
 <meta property="og:site_name" content="弎柒-blog">
-<meta property="og:description" content="弎柒-blog">
+<meta property="og:description" content="本篇介绍如何在单机搭建一个hadoop系统">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-14T09:59:57.508Z">
+<meta property="og:updated_time" content="2020-05-15T03:46:13.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建hadoop">
-<meta name="twitter:description" content="弎柒-blog">
+<meta name="twitter:description" content="本篇介绍如何在单机搭建一个hadoop系统">
   <link rel="alternate" href="/atom.xml" title="弎柒-blog" type="application/atom+xml">
   <link rel="canonical" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建Hadoop/">
 
@@ -263,11 +263,19 @@
                 
               
 
-              <time title="Created: 2020-05-14 09:40:06 / Modified: 17:59:57" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
+              <time title="Created: 2020-05-14 10:07:24" itemprop="dateCreated datePublished" datetime="2020-05-14T10:07:24+08:00">2020-05-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-15 11:46:13" itemprop="dateModified" datetime="2020-05-15T11:46:13+08:00">2020-05-15</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -295,7 +303,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>本篇介绍如何在单机搭建一个hadoop系统</p>
+<a id="more"></a>
+
+<h3 id="step1-前言"><a href="#step1-前言" class="headerlink" title="step1 前言"></a>step1 前言</h3><p>hadoop 可以理解为分布式存储仓库，通过分布存储支撑大量数据<br>这里不做过多的介绍，具体可以了解<a href="https://hadoop.apache.org/" target="_blank" rel="noopener">官网</a></p>
+<h3 id="step2-环境需求"><a href="#step2-环境需求" class="headerlink" title="step2 环境需求"></a>step2 环境需求</h3><ol>
+<li>java8</li>
+<li>unar 很香的解压工具</li>
+</ol>
+<h3 id="step3-下载"><a href="#step3-下载" class="headerlink" title="step3 下载"></a>step3 下载</h3><p><a href="http://apache.claz.org/hadoop/" target="_blank" rel="noopener">hadoop官网下载地址</a><br>选择自己需要的版本，这里我选择2.10版本，不同版本也许会有些差异，但是问题都不大<br>这里我选择部署目录<code>/root/warehouse</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.10.0/hadoop-2.10.0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>下载完成之后解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unar hadoop-2.10.0.tar.gz</span><br><span class="line">mv hadoop-2.10.0 hadoop</span><br></pre></td></tr></table></figure>
+
+<h3 id="step4-配置"><a href="#step4-配置" class="headerlink" title="step4 配置"></a>step4 配置</h3><p>进入<code>hadoop/etc/hadoop</code>修改相关配置文件</p>
+<ol>
+<li><p>配置<code>core-site.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--这是hadoop临时目录，hadoop临时产生的文件都在这里--&gt;</span><br><span class="line">&lt;!--默认是/tmp/hadoo-hadoop，系统重启会丢失，所以最好指定这个目录--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;file:root/warehouse/hadoop/tmp&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;Abase for other temporary directories.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;!--hadoop服务的端口, 这里地址用localhost--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置<code>hdfs-site.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--复制副本，单机模式我们写1就行了--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--不是root用户也可以写文件到hdfs--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--namenode服务的目录--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/warehouse/hadoop/data/name&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--hadoop的数据目录--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/warehouse/hadoop/data/data&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li>配置<code>mapred-site.xml</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>配置<code>hadoop-env.sh</code>，不是必要的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=替换成本机JAVA_HOME</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改houst 增加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 hadoop-alone</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改etc/hadoop/slave</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop-alone</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop namenode -format</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="step5-启动测试"><a href="#step5-启动测试" class="headerlink" title="step5 启动测试"></a>step5 启动测试</h3><ol>
+<li><p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-all.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试<br>上传一个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop fs -put README.txt /README.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop fs -cat /README.txt</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="step6-总结"><a href="#step6-总结" class="headerlink" title="step6 总结"></a>step6 总结</h3><p>在搭建过程中出现了几次错误</p>
+<ol>
+<li>fs.defaultFS的value一定要改，不然要配置hosts</li>
+<li>format之后再启动服务,不然会出现client连不上的问题</li>
+</ol>
+<p>其他没有发现大问题，搭建过程还算顺利</p>
+
     </div>
 
     
@@ -322,8 +394,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/05/14/warehouse/搭建Presto/" rel="next" title="搭建presto">
-                  <i class="fa fa-chevron-left"></i> 搭建presto
+                <a href="/2020/05/14/warehouse/搭建warehouse/" rel="next" title="搭建一套Warehouse">
+                  <i class="fa fa-chevron-left"></i> 搭建一套Warehouse
                 </a>
               
             </div>
@@ -331,10 +403,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2020/05/14/warehouse/搭建Hive/" rel="prev" title="搭建Hive">
-                  搭建Hive <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -369,8 +437,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,7 +462,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -408,9 +485,7 @@
         
           
         
-          
-        
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -443,7 +518,7 @@
         
           
         
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -483,6 +558,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1-前言"><span class="nav-number">1.</span> <span class="nav-text">step1 前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2-环境需求"><span class="nav-number">2.</span> <span class="nav-text">step2 环境需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3-下载"><span class="nav-number">3.</span> <span class="nav-text">step3 下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4-配置"><span class="nav-number">4.</span> <span class="nav-text">step4 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step5-启动测试"><span class="nav-number">5.</span> <span class="nav-text">step5 启动测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step6-总结"><span class="nav-number">6.</span> <span class="nav-text">step6 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>

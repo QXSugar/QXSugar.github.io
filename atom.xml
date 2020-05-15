@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qxsugar.github.io/"/>
-  <updated>2020-05-14T09:59:57.519Z</updated>
+  <updated>2020-05-15T03:46:13.456Z</updated>
   <id>https://qxsugar.github.io/</id>
   
   <author>
@@ -17,94 +17,17 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>搭建REDASH</title>
-    <link href="https://qxsugar.github.io/2020/05/14/warehouse/%E6%90%AD%E5%BB%BAREDASH/"/>
-    <id>https://qxsugar.github.io/2020/05/14/warehouse/搭建REDASH/</id>
-    <published>2020-05-14T01:46:59.000Z</published>
-    <updated>2020-05-14T09:59:57.519Z</updated>
-    
-    <content type="html"><![CDATA[<p>公司的大数据平台用的是redash，<br>日常使用感觉真香。<br>redash是开源的。<br>最近想自己搭建一个来玩玩。<br>然后被坑到哭了。<br>记录一下。    </p><a id="more"></a><h3 id="redash-地址"><a href="#redash-地址" class="headerlink" title="redash 地址"></a>redash 地址</h3><p><a href="https://github.com/getredash/redash" target="_blank" rel="noopener">地址</a></p><h3 id="step1-第一次失败"><a href="#step1-第一次失败" class="headerlink" title="step1 第一次失败"></a>step1 第一次失败</h3><p>第一次直接在一个1C2G的小菜机上编译，<br>部署方案是按照google找的教程的<br><img src="https://oss.isugar.wang/9SZdOJ.png" alt="pic"></p><p>然后。当我运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure><p>不到5分钟，我的小机器彻底失去了联系<br>CPU100% 内存100%，连ssh都连不上</p><h3 id="step2-第二次失败"><a href="#step2-第二次失败" class="headerlink" title="step2 第二次失败"></a>step2 第二次失败</h3><p>吃了第一次亏之后，<br>想办法搞了一台大机器<br><img src="https://oss.isugar.wang/VGQEFT.png" alt="pic"></p><p>运行命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure><p>然后，又被坑了。pip安装超时，中断了安装<br>囧</p><h3 id="step3-第三次失败"><a href="#step3-第三次失败" class="headerlink" title="step3 第三次失败"></a>step3 第三次失败</h3><p>经历了第三次痛苦的失败后，我机智的在Dockerfile的pip里加上了 </p><blockquote><p>-i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p></blockquote><p>然后再run</p><blockquote><p>sudo nohub docker-compose -f docker-compose.yml up &gt; up.log &amp;</p></blockquote><p>经过漫长的构建后，终于成功的构建完了<br>然后看启动日志<br><img src="https://oss.isugar.wang/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_a0f8b9fc-04b4-4241-8b87-5769991e2758.png" alt="pic"><br>wtf? Permission Denied!!!，感觉像是docker权限配置问题<br>改配置build，还是失败了。试了好几次。还是失败了</p><h3 id="step4-意外的成功"><a href="#step4-意外的成功" class="headerlink" title="step4 意外的成功"></a>step4 意外的成功</h3><p>最后，只能到github看README.md了，<br>看看有没有有用的信息或者其他人报告问题<br>然后看到有个setup文件夹，里面有个setup.sh<br>抱着试一试的心态，run了一下setup.sh<br>没想到日志刷刷刷。然后就构建好了<br>打开5000端口，熟悉的界面。感动到哭<br>导入一个测试数据源，查一下<br><img src="https://oss.isugar.wang/kavxTW.png" alt="pic"><br>熟悉的界面。感动到哭，搞了差不多一个星期！！！</p><h3 id="step5-END"><a href="#step5-END" class="headerlink" title="step5 END"></a>step5 END</h3><p>github没有看到搭建教程！<br>然后第三方搭建教程都是跑docker-compose!!!<br>有时候真的需要慢下来仔细思考<br>别人的经验不一定是对的！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;公司的大数据平台用的是redash，&lt;br&gt;日常使用感觉真香。&lt;br&gt;redash是开源的。&lt;br&gt;最近想自己搭建一个来玩玩。&lt;br&gt;然后被坑到哭了。&lt;br&gt;记录一下。    &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="warehoused" scheme="https://qxsugar.github.io/categories/warehoused/"/>
-    
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/tags/warehouse/"/>
-    
-      <category term="redash" scheme="https://qxsugar.github.io/tags/redash/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hive查询HDFS数据</title>
-    <link href="https://qxsugar.github.io/2020/05/14/warehouse/hive%E8%AF%BB%E5%8F%96hdfs/"/>
-    <id>https://qxsugar.github.io/2020/05/14/warehouse/hive读取hdfs/</id>
-    <published>2020-05-14T01:40:06.000Z</published>
-    <updated>2020-05-14T10:00:43.797Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Hive读取HDFS文件"><a href="#Hive读取HDFS文件" class="headerlink" title="Hive读取HDFS文件"></a>Hive读取HDFS文件</h2><p>新建一张表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table demo (id int, name string, age int) ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;\t&apos; STORED AS TEXTFILE;</span><br></pre></td></tr></table></figure><p>加载数据到表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data inpath &apos;hdfs文件&apos; into table wyp;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Hive读取HDFS文件&quot;&gt;&lt;a href=&quot;#Hive读取HDFS文件&quot; class=&quot;headerlink&quot; title=&quot;Hive读取HDFS文件&quot;&gt;&lt;/a&gt;Hive读取HDFS文件&lt;/h2&gt;&lt;p&gt;新建一张表&lt;/p&gt;
-&lt;figure class=&quot;highl
-      
-    
-    </summary>
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/categories/warehouse/"/>
-    
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/tags/warehouse/"/>
-    
-      <category term="hive" scheme="https://qxsugar.github.io/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建Hive</title>
-    <link href="https://qxsugar.github.io/2020/05/14/warehouse/%E6%90%AD%E5%BB%BAHive/"/>
-    <id>https://qxsugar.github.io/2020/05/14/warehouse/搭建Hive/</id>
-    <published>2020-05-14T01:40:06.000Z</published>
-    <updated>2020-05-14T09:59:57.500Z</updated>
-    
-    <content type="html"><![CDATA[<p>schematool -dbType mysql -initSchema</p><p>启动hive报错</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader &apos;bootstrap&apos;)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:413)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:389)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliSessionState.&lt;init&gt;(CliSessionState.java:60)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:705)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683)</span><br><span class="line">at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">at java.base/java.lang.reflect.Method.invoke(Method.java:566)</span><br><span class="line">at org.apache.hadoop.util.RunJar.run(RunJar.java:244)</span><br><span class="line">at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</span><br></pre></td></tr></table></figure><p>发现是java版本问题，java8以后没有了URLClassLoader</p><p>linux 切换 java 版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --config javac</span><br><span class="line">update-alternatives --config java</span><br></pre></td></tr></table></figure><p>选择java8</p><p>修改JAVA_HOME,启动hive<br>遇到错误</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: $&#123;system:java.io.tmpdir%7D/$%7Bsystem:user.name%7D</span><br><span class="line">at org.apache.hadoop.fs.Path.initialize(Path.java:254)</span><br><span class="line">at org.apache.hadoop.fs.Path.&lt;init&gt;(Path.java:212)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.createSessionDirs(SessionState.java:710)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:627)</span><br><span class="line">at org.apache.hadoop.hive.ql.session.SessionState.beginStart(SessionState.java:591)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:747)</span><br><span class="line">at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683)</span><br><span class="line">at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">at org.apache.hadoop.util.RunJar.run(RunJar.java:244)</span><br><span class="line">at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</span><br><span class="line">Caused by: java.net.URISyntaxException: Relative path in absolute URI: $&#123;system:java.io.tmpdir%7D/$%7Bsystem:user.name%7D</span><br><span class="line">at java.net.URI.checkPath(URI.java:1823)</span><br><span class="line">at java.net.URI.&lt;init&gt;(URI.java:745)</span><br><span class="line">at org.apache.hadoop.fs.Path.initialize(Path.java:251)</span><br><span class="line">... 12 more</span><br></pre></td></tr></table></figure><p>增加property</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">   &lt;name&gt;system:java.io.tmpdir&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;&#123;&#123;你本地的路径&#125;&#125;&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br></pre></td></tr></table></figure><p>启动成功</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;schematool -dbType mysql -initSchema&lt;/p&gt;
-&lt;p&gt;启动hive报错&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;
-      
-    
-    </summary>
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/categories/warehouse/"/>
-    
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/tags/warehouse/"/>
-    
-      <category term="hive" scheme="https://qxsugar.github.io/tags/hive/"/>
-    
-  </entry>
-  
-  <entry>
     <title>搭建hadoop</title>
     <link href="https://qxsugar.github.io/2020/05/14/warehouse/%E6%90%AD%E5%BB%BAHadoop/"/>
     <id>https://qxsugar.github.io/2020/05/14/warehouse/搭建Hadoop/</id>
-    <published>2020-05-14T01:40:06.000Z</published>
-    <updated>2020-05-14T09:59:57.508Z</updated>
+    <published>2020-05-14T02:07:24.000Z</published>
+    <updated>2020-05-15T03:46:13.456Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇介绍如何在单机搭建一个hadoop系统</p><a id="more"></a><h3 id="step1-前言"><a href="#step1-前言" class="headerlink" title="step1 前言"></a>step1 前言</h3><p>hadoop 可以理解为分布式存储仓库，通过分布存储支撑大量数据<br>这里不做过多的介绍，具体可以了解<a href="https://hadoop.apache.org/" target="_blank" rel="noopener">官网</a></p><h3 id="step2-环境需求"><a href="#step2-环境需求" class="headerlink" title="step2 环境需求"></a>step2 环境需求</h3><ol><li>java8</li><li>unar 很香的解压工具</li></ol><h3 id="step3-下载"><a href="#step3-下载" class="headerlink" title="step3 下载"></a>step3 下载</h3><p><a href="http://apache.claz.org/hadoop/" target="_blank" rel="noopener">hadoop官网下载地址</a><br>选择自己需要的版本，这里我选择2.10版本，不同版本也许会有些差异，但是问题都不大<br>这里我选择部署目录<code>/root/warehouse</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.10.0/hadoop-2.10.0.tar.gz</span><br></pre></td></tr></table></figure><p>下载完成之后解压</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unar hadoop-2.10.0.tar.gz</span><br><span class="line">mv hadoop-2.10.0 hadoop</span><br></pre></td></tr></table></figure><h3 id="step4-配置"><a href="#step4-配置" class="headerlink" title="step4 配置"></a>step4 配置</h3><p>进入<code>hadoop/etc/hadoop</code>修改相关配置文件</p><ol><li><p>配置<code>core-site.xml</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--这是hadoop临时目录，hadoop临时产生的文件都在这里--&gt;</span><br><span class="line">&lt;!--默认是/tmp/hadoo-hadoop，系统重启会丢失，所以最好指定这个目录--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;file:root/warehouse/hadoop/tmp&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;Abase for other temporary directories.&lt;/description&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;!--hadoop服务的端口, 这里地址用localhost--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure></li><li><p>配置<code>hdfs-site.xml</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--复制副本，单机模式我们写1就行了--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--不是root用户也可以写文件到hdfs--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.permissions&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--namenode服务的目录--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/warehouse/hadoop/data/name&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--hadoop的数据目录--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/root/warehouse/hadoop/data/data&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure></li></ol><ol start="3"><li>配置<code>mapred-site.xml</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure></li></ol><ol start="5"><li><p>配置<code>hadoop-env.sh</code>，不是必要的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=替换成本机JAVA_HOME</span><br></pre></td></tr></table></figure></li><li><p>修改houst 增加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 hadoop-alone</span><br></pre></td></tr></table></figure></li><li><p>修改etc/hadoop/slave</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop-alone</span><br></pre></td></tr></table></figure></li><li><p>初始化</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop namenode -format</span><br></pre></td></tr></table></figure></li></ol><h3 id="step5-启动测试"><a href="#step5-启动测试" class="headerlink" title="step5 启动测试"></a>step5 启动测试</h3><ol><li><p>启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-all.sh</span><br></pre></td></tr></table></figure></li><li><p>测试<br>上传一个文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop fs -put README.txt /README.txt</span><br></pre></td></tr></table></figure></li><li><p>查看文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hadoop fs -cat /README.txt</span><br></pre></td></tr></table></figure></li></ol><h3 id="step6-总结"><a href="#step6-总结" class="headerlink" title="step6 总结"></a>step6 总结</h3><p>在搭建过程中出现了几次错误</p><ol><li>fs.defaultFS的value一定要改，不然要配置hosts</li><li>format之后再启动服务,不然会出现client连不上的问题</li></ol><p>其他没有发现大问题，搭建过程还算顺利</p>]]></content>
     
     <summary type="html">
+    
+      &lt;p&gt;本篇介绍如何在单机搭建一个hadoop系统&lt;/p&gt;
     
     </summary>
     
@@ -118,57 +41,17 @@
   </entry>
   
   <entry>
-    <title>搭建presto</title>
-    <link href="https://qxsugar.github.io/2020/05/14/warehouse/%E6%90%AD%E5%BB%BAPresto/"/>
-    <id>https://qxsugar.github.io/2020/05/14/warehouse/搭建Presto/</id>
-    <published>2020-05-14T01:40:06.000Z</published>
-    <updated>2020-05-14T09:59:57.526Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/categories/warehouse/"/>
-    
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/tags/warehouse/"/>
-    
-      <category term="presto" scheme="https://qxsugar.github.io/tags/presto/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建搭建sqoop</title>
-    <link href="https://qxsugar.github.io/2020/05/14/warehouse/%E6%90%AD%E5%BB%BASqoop/"/>
-    <id>https://qxsugar.github.io/2020/05/14/warehouse/搭建Sqoop/</id>
-    <published>2020-05-14T01:40:06.000Z</published>
-    <updated>2020-05-14T09:59:57.514Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/categories/warehouse/"/>
-    
-    
-      <category term="warehouse" scheme="https://qxsugar.github.io/tags/warehouse/"/>
-    
-      <category term="sqoop" scheme="https://qxsugar.github.io/tags/sqoop/"/>
-    
-  </entry>
-  
-  <entry>
     <title>搭建一套Warehouse</title>
     <link href="https://qxsugar.github.io/2020/05/14/warehouse/%E6%90%AD%E5%BB%BAwarehouse/"/>
     <id>https://qxsugar.github.io/2020/05/14/warehouse/搭建warehouse/</id>
     <published>2020-05-14T01:40:06.000Z</published>
-    <updated>2020-05-14T10:01:39.866Z</updated>
+    <updated>2020-05-14T10:07:01.999Z</updated>
     
-    <content type="html"><![CDATA[<p>现在很多第三方平台已经实现了大数据架构，开箱即用<br>但是如果一开始就用人家搭建好的工具。<br>那么自己的能力是不会得到成长的。<br>所以决定自己搭建一套单机系统来实践一下</p><a id="more"></a><h3 id="step1-数据仓库是什么"><a href="#step1-数据仓库是什么" class="headerlink" title="step1 数据仓库是什么"></a>step1 数据仓库是什么</h3><pre><code>数据仓库和数据库是有区别的数据仓库主要用来做OLAP用的</code></pre><p><a href="https://www.zhihu.com/question/20623931" target="_blank" rel="noopener">更多区别</a></p><h3 id="step-本次要搭建的数据仓库架构"><a href="#step-本次要搭建的数据仓库架构" class="headerlink" title="step 本次要搭建的数据仓库架构"></a>step 本次要搭建的数据仓库架构</h3><p><img src="/images/warehouse-framework.png" alt="数据仓库架构"></p><h3 id="依赖组件"><a href="#依赖组件" class="headerlink" title="依赖组件"></a>依赖组件</h3><ol><li>hadoop 用来做分布式存储</li><li>hive 用来读取hadoop的hdfs并转换成hsql可查询</li><li>presto 用来调度查询，分布式查询，联表join</li><li>sqoop 用来导入数据源到hadoop</li><li>redash 用来做BI数据展示</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>现在很多第三方平台已经实现了数据仓库。<br>但是如果一开始就用人家搭建好的工具，那么自己的能力是不会得到成长的。<br>所以决定自己搭建一套单机系统来实践一下。</p><a id="more"></a><h3 id="step1-数据仓库是什么"><a href="#step1-数据仓库是什么" class="headerlink" title="step1 数据仓库是什么"></a>step1 数据仓库是什么</h3><pre><code>数据仓库和数据库是有区别的数据仓库主要用来做OLAP用的</code></pre><p><a href="https://www.zhihu.com/question/20623931" target="_blank" rel="noopener">更多区别</a></p><h3 id="step2-数据仓库架构"><a href="#step2-数据仓库架构" class="headerlink" title="step2 数据仓库架构"></a>step2 数据仓库架构</h3><p><img src="/images/warehouse-framework.png" alt="数据仓库架构"></p><h3 id="step3-依赖组件"><a href="#step3-依赖组件" class="headerlink" title="step3 依赖组件"></a>step3 依赖组件</h3><ol><li>hadoop 用来做分布式存储</li><li>hive 用来读取hadoop的hdfs并转换成hsql可查询</li><li>presto 用来调度查询，分布式查询，联表join</li><li>sqoop 用来导入数据源到hadoop</li><li>redash 用来做BI数据展示</li></ol><h3 id="step4-配置依赖"><a href="#step4-配置依赖" class="headerlink" title="step4 配置依赖"></a>step4 配置依赖</h3><p>由于hadoop等都是大型软件，比较吃配置，由于没有集群，所以找了个大机器来搭建。</p><p>配置如下<br><img src="/images/big-machine.png" alt></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;现在很多第三方平台已经实现了大数据架构，开箱即用&lt;br&gt;但是如果一开始就用人家搭建好的工具。&lt;br&gt;那么自己的能力是不会得到成长的。&lt;br&gt;所以决定自己搭建一套单机系统来实践一下&lt;/p&gt;
+      &lt;p&gt;现在很多第三方平台已经实现了数据仓库。&lt;br&gt;但是如果一开始就用人家搭建好的工具，那么自己的能力是不会得到成长的。&lt;br&gt;所以决定自己搭建一套单机系统来实践一下。&lt;/p&gt;
     
     </summary>
     

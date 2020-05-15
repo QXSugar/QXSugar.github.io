@@ -230,309 +230,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建REDASH/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="弎柒">
-      <meta itemprop="description" content="弎柒-blog">
-      <meta itemprop="image" content="https://bak-1252018492.cos.ap-chengdu.myqcloud.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弎柒-blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h2 class="post-title" itemprop="name headline">
-              
-              <a href="/2020/05/14/warehouse/搭建REDASH/" class="post-title-link" itemprop="url">搭建REDASH</a>
-            
-          </h2>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-05-14 09:46:59 / Modified: 17:59:57" itemprop="dateCreated datePublished" datetime="2020-05-14T09:46:59+08:00">2020-05-14</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/warehoused/" itemprop="url" rel="index"><span itemprop="name">warehoused</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>公司的大数据平台用的是redash，<br>日常使用感觉真香。<br>redash是开源的。<br>最近想自己搭建一个来玩玩。<br>然后被坑到哭了。<br>记录一下。    </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/05/14/warehouse/搭建REDASH/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/hive读取hdfs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="弎柒">
-      <meta itemprop="description" content="弎柒-blog">
-      <meta itemprop="image" content="https://bak-1252018492.cos.ap-chengdu.myqcloud.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弎柒-blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h2 class="post-title" itemprop="name headline">
-              
-              <a href="/2020/05/14/warehouse/hive读取hdfs/" class="post-title-link" itemprop="url">Hive查询HDFS数据</a>
-            
-          </h2>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-05-14 09:40:06 / Modified: 18:00:43" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/warehouse/" itemprop="url" rel="index"><span itemprop="name">warehouse</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <h2 id="Hive读取HDFS文件"><a href="#Hive读取HDFS文件" class="headerlink" title="Hive读取HDFS文件"></a>Hive读取HDFS文件</h2><p>新建一张表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table demo (id int, name string, age int) ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;\t&apos; STORED AS TEXTFILE;</span><br></pre></td></tr></table></figure>
-
-<p>加载数据到表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data inpath &apos;hdfs文件&apos; into table wyp;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建Hive/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="弎柒">
-      <meta itemprop="description" content="弎柒-blog">
-      <meta itemprop="image" content="https://bak-1252018492.cos.ap-chengdu.myqcloud.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弎柒-blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h2 class="post-title" itemprop="name headline">
-              
-              <a href="/2020/05/14/warehouse/搭建Hive/" class="post-title-link" itemprop="url">搭建Hive</a>
-            
-          </h2>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-05-14 09:40:06 / Modified: 17:59:57" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/warehouse/" itemprop="url" rel="index"><span itemprop="name">warehouse</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>schematool -dbType mysql -initSchema</p>
-<p>启动hive报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader &apos;bootstrap&apos;)</span><br><span class="line">	at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:413)</span><br><span class="line">	at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:389)</span><br><span class="line">	at org.apache.hadoop.hive.cli.CliSessionState.&lt;init&gt;(CliSessionState.java:60)</span><br><span class="line">	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:705)</span><br><span class="line">	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.base/java.lang.reflect.Method.invoke(Method.java:566)</span><br><span class="line">	at org.apache.hadoop.util.RunJar.run(RunJar.java:244)</span><br><span class="line">	at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</span><br></pre></td></tr></table></figure>
-
-<p>发现是java版本问题，java8以后没有了URLClassLoader</p>
-<p>linux 切换 java 版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --config javac</span><br><span class="line">update-alternatives --config java</span><br></pre></td></tr></table></figure>
-
-<p>选择java8</p>
-<p>修改JAVA_HOME,启动hive<br>遇到错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: $&#123;system:java.io.tmpdir%7D/$%7Bsystem:user.name%7D</span><br><span class="line">	at org.apache.hadoop.fs.Path.initialize(Path.java:254)</span><br><span class="line">	at org.apache.hadoop.fs.Path.&lt;init&gt;(Path.java:212)</span><br><span class="line">	at org.apache.hadoop.hive.ql.session.SessionState.createSessionDirs(SessionState.java:710)</span><br><span class="line">	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:627)</span><br><span class="line">	at org.apache.hadoop.hive.ql.session.SessionState.beginStart(SessionState.java:591)</span><br><span class="line">	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:747)</span><br><span class="line">	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</span><br><span class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</span><br><span class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</span><br><span class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</span><br><span class="line">	at org.apache.hadoop.util.RunJar.run(RunJar.java:244)</span><br><span class="line">	at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</span><br><span class="line">Caused by: java.net.URISyntaxException: Relative path in absolute URI: $&#123;system:java.io.tmpdir%7D/$%7Bsystem:user.name%7D</span><br><span class="line">	at java.net.URI.checkPath(URI.java:1823)</span><br><span class="line">	at java.net.URI.&lt;init&gt;(URI.java:745)</span><br><span class="line">	at org.apache.hadoop.fs.Path.initialize(Path.java:251)</span><br><span class="line">	... 12 more</span><br></pre></td></tr></table></figure>
-
-<p>增加property</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">   &lt;name&gt;system:java.io.tmpdir&lt;/name&gt;</span><br><span class="line">   &lt;value&gt;&#123;&#123;你本地的路径&#125;&#125;&lt;/value&gt;</span><br><span class="line"> &lt;/property&gt;</span><br></pre></td></tr></table></figure>
-
-<p>启动成功</p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建Hadoop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -565,11 +262,19 @@
                 
               
 
-              <time title="Created: 2020-05-14 09:40:06 / Modified: 17:59:57" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
+              <time title="Created: 2020-05-14 10:07:24" itemprop="dateCreated datePublished" datetime="2020-05-14T10:07:24+08:00">2020-05-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-15 11:46:13" itemprop="dateModified" datetime="2020-05-15T11:46:13+08:00">2020-05-15</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -597,193 +302,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <p>本篇介绍如何在单机搭建一个hadoop系统</p>
+          <!--noindex-->
           
-            
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/05/14/warehouse/搭建Hadoop/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建Presto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="弎柒">
-      <meta itemprop="description" content="弎柒-blog">
-      <meta itemprop="image" content="https://bak-1252018492.cos.ap-chengdu.myqcloud.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弎柒-blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h2 class="post-title" itemprop="name headline">
-              
-              <a href="/2020/05/14/warehouse/搭建Presto/" class="post-title-link" itemprop="url">搭建presto</a>
-            
-          </h2>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-05-14 09:40:06 / Modified: 17:59:57" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/warehouse/" itemprop="url" rel="index"><span itemprop="name">warehouse</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2020/05/14/warehouse/搭建Sqoop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="弎柒">
-      <meta itemprop="description" content="弎柒-blog">
-      <meta itemprop="image" content="https://bak-1252018492.cos.ap-chengdu.myqcloud.com/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弎柒-blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h2 class="post-title" itemprop="name headline">
-              
-              <a href="/2020/05/14/warehouse/搭建Sqoop/" class="post-title-link" itemprop="url">搭建搭建sqoop</a>
-            
-          </h2>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2020-05-14 09:40:06 / Modified: 17:59:57" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/warehouse/" itemprop="url" rel="index"><span itemprop="name">warehouse</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            
-          
+          <!--/noindex-->
         
       
     </div>
@@ -841,7 +369,7 @@
                 
               
 
-              <time title="Created: 2020-05-14 09:40:06 / Modified: 18:01:39" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
+              <time title="Created: 2020-05-14 09:40:06 / Modified: 18:07:01" itemprop="dateCreated datePublished" datetime="2020-05-14T09:40:06+08:00">2020-05-14</time>
             </span>
           
             
@@ -873,7 +401,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>现在很多第三方平台已经实现了大数据架构，开箱即用<br>但是如果一开始就用人家搭建好的工具。<br>那么自己的能力是不会得到成长的。<br>所以决定自己搭建一套单机系统来实践一下</p>
+          <p>现在很多第三方平台已经实现了数据仓库。<br>但是如果一开始就用人家搭建好的工具，那么自己的能力是不会得到成长的。<br>所以决定自己搭建一套单机系统来实践一下。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1222,12 +750,116 @@
   </article>
 
     
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qxsugar.github.io/2018/09/21/新的开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="弎柒">
+      <meta itemprop="description" content="弎柒-blog">
+      <meta itemprop="image" content="https://bak-1252018492.cos.ap-chengdu.myqcloud.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弎柒-blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h2 class="post-title" itemprop="name headline">
+              
+              <a href="/2018/09/21/新的开始/" class="post-title-link" itemprop="url">新的开始</a>
+            
+          </h2>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2018-09-21 11:05:54" itemprop="dateCreated datePublished" datetime="2018-09-21T11:05:54+08:00">2018-09-21</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-14 17:34:57" itemprop="dateModified" datetime="2020-05-14T17:34:57+08:00">2020-05-14</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录一下自己的学习成长路线</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/09/21/新的开始/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
   </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
 
 
           </div>
@@ -1262,7 +894,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1285,9 +917,7 @@
         
           
         
-          
-        
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -1320,7 +950,7 @@
         
           
         
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
