@@ -45,7 +45,7 @@
 <meta property="og:description" content="brevity is beauty" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://me.isugar.wang/" />
-<meta property="og:updated_time" content="2018-09-21T11:05:54+00:00" />
+<meta property="og:updated_time" content="2020-05-14T10:07:24+00:00" />
 <meta itemprop="name" content="brevity is beauty">
 <meta itemprop="description" content="brevity is beauty">
 <meta name="twitter:card" content="summary"/>
@@ -117,21 +117,105 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/start/">新的开始</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%90%AD%E5%BB%BAhadoop/">搭建hadoop</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2018-09-21 </span>
+      <span class="post-time"> 2020-05-14 </span>
       <div class="post-category">
-          <a href="/categories/hugo/"> hugo </a>
+          <a href="/categories/warehouse/"> warehouse </a>
           </div>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      记录一下自己的学习成长路线 加油～ 天道酬勤, 总有一天会蜕变的 感觉自己好懒啊。2018都快过去了才写了那么一点东西 卧槽，2019快完了。还没写东
+      本篇介绍如何在单机搭建一个hadoop系统 step1 前言 hadoop 可以理解为分布式存储仓库，通过分布存储支撑大量数据 这里不做过多的介绍，具体可以了解官网 step2 环
     </div>
     <div class="read-more">
-      <a href="/post/start/" class="read-more-link">Read more...</a>
+      <a href="/post/%E6%90%AD%E5%BB%BAhadoop/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%90%AD%E5%BB%BAredash/">搭建REDASH</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-14 </span>
+      <div class="post-category">
+          <a href="/categories/warehouse/"> warehouse </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      公司的大数据平台用的是redash， 日常使用感觉真香。 redash是开源的。 最近想自己搭建一个来玩玩。 然后被坑到哭了。 记录一下。 redash 地址 地址 step1
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%90%AD%E5%BB%BAredash/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/hive%E8%AF%BB%E5%8F%96hdfs/">Hive查询HDFS数据</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-14 </span>
+      <div class="post-category">
+          <a href="/categories/warehouse/"> warehouse </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Hive读取HDFS文件 新建一张表 1 create table demo (id int, name string, age int) ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;\t&#39; STORED AS TEXTFILE; 加载数据到表 1 load data inpath &#39;hdfs文件&#39; into table wyp;
+    </div>
+    <div class="read-more">
+      <a href="/post/hive%E8%AF%BB%E5%8F%96hdfs/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%90%AD%E5%BB%BAhive/">搭建Hive</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-14 </span>
+      <div class="post-category">
+          <a href="/categories/warehouse/"> warehouse </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      schematool -dbType mysql -initSchema 启动hive报错 1 2 3 4 5 6 7 8 9 10 11 12 Exception in thread &#34;main&#34; java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader &#39;bootstrap&#39;) at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:413) at org.apache.hadoop.hive.ql.session.SessionState.&lt;init&gt;(SessionState.java:389) at org.apache.hadoop.hive.cli.CliSessionState.&lt;init&gt;(CliSessionState.java:60) at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:705) at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.base/java.lang.reflect.Method.invoke(Method.java:566) at org.apache.hadoop.util.RunJar.run(RunJar.java:244) at org.apache.hadoop.util.RunJar.main(RunJar.java:158)
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%90%AD%E5%BB%BAhive/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%90%AD%E5%BB%BApresto/">搭建presto</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-05-14 </span>
+      <div class="post-category">
+          <a href="/categories/warehouse/"> warehouse </a>
+          </div>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%90%AD%E5%BB%BApresto/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
@@ -140,7 +224,10 @@
   
   <nav class="pagination">
     
-    
+    <a class="next" href="/page/2/">
+        <span class="next-text">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
   </nav>
         </div>
         

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on brevity is beauty</title>
+    <link>https://me.isugar.wang/tags/mysql/</link>
+    <description>Recent content in mysql on brevity is beauty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 27 Aug 2019 14:45:26 +0000</lastBuildDate>
+    
+	<atom:link href="https://me.isugar.wang/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql查询命中率查询脚本</title>
+      <link>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Tue, 27 Aug 2019 14:45:26 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</guid>
+      <description>当一个mysql的查询量很高时候，有很多种优化方案。 分库分表，主从分离等都是不错的选择。 主从分离情况下，我们怎么权衡一个DB够不够优秀呢? 通</description>
+    </item>
+    
+    <item>
+      <title>mysql常用命令整理</title>
+      <link>https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sat, 24 Aug 2019 05:11:00 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</guid>
+      <description>整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 FLUSH TABLES WITH READ LOCK 解锁操作 UNLOCK TABLES MySql备</description>
+    </item>
+    
+  </channel>
+</rss>

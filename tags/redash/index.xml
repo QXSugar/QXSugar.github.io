@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redash on brevity is beauty</title>
+    <link>https://me.isugar.wang/tags/redash/</link>
+    <description>Recent content in redash on brevity is beauty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 14 May 2020 09:46:59 +0000</lastBuildDate>
+    
+	<atom:link href="https://me.isugar.wang/tags/redash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>搭建REDASH</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAredash/</link>
+      <pubDate>Thu, 14 May 2020 09:46:59 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAredash/</guid>
+      <description>公司的大数据平台用的是redash， 日常使用感觉真香。 redash是开源的。 最近想自己搭建一个来玩玩。 然后被坑到哭了。 记录一下。 redash 地址 地址 step1</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>搭建REDASH - brevity is beauty</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="qxsugar" /><meta name="description" content="公司的大数据平台用的是redash， 日常使用感觉真香。 redash是开源的。 最近想自己搭建一个来玩玩。 然后被坑到哭了。 记录一下。 redash 地址 地址 step1" /><meta name="keywords" content="python, go, 数据" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAredash/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="搭建REDASH" />
+<meta property="og:description" content="公司的大数据平台用的是redash， 日常使用感觉真香。 redash是开源的。 最近想自己搭建一个来玩玩。 然后被坑到哭了。 记录一下。 redash 地址 地址 step1" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAredash/" />
+<meta property="article:published_time" content="2020-05-14T09:46:59+00:00" />
+<meta property="article:modified_time" content="2020-05-14T09:46:59+00:00" />
+<meta itemprop="name" content="搭建REDASH">
+<meta itemprop="description" content="公司的大数据平台用的是redash， 日常使用感觉真香。 redash是开源的。 最近想自己搭建一个来玩玩。 然后被坑到哭了。 记录一下。 redash 地址 地址 step1">
+<meta itemprop="datePublished" content="2020-05-14T09:46:59+00:00" />
+<meta itemprop="dateModified" content="2020-05-14T09:46:59+00:00" />
+<meta itemprop="wordCount" content="599">
+
+
+
+<meta itemprop="keywords" content="warehouse,redash," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="搭建REDASH"/>
+<meta name="twitter:description" content="公司的大数据平台用的是redash， 日常使用感觉真香。 redash是开源的。 最近想自己搭建一个来玩玩。 然后被坑到哭了。 记录一下。 redash 地址 地址 step1"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Magic Conch</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Magic Conch</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">搭建REDASH</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-14 </span>
+        <div class="post-category">
+            <a href="/categories/warehouse/"> warehouse </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#redash-地址">redash 地址</a></li>
+            <li><a href="#step1-第一次失败">step1 第一次失败</a></li>
+            <li><a href="#step2-第二次失败">step2 第二次失败</a></li>
+            <li><a href="#step3-第三次失败">step3 第三次失败</a></li>
+            <li><a href="#step4-意外的成功">step4 意外的成功</a></li>
+            <li><a href="#step5-end">step5 END</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>公司的大数据平台用的是redash，
+日常使用感觉真香。
+redash是开源的。
+最近想自己搭建一个来玩玩。
+然后被坑到哭了。
+记录一下。</p>
+<!-- more -->
+<h3 id="redash-地址">redash 地址</h3>
+<p><a href="https://github.com/getredash/redash">地址</a></p>
+<h3 id="step1-第一次失败">step1 第一次失败</h3>
+<p>第一次直接在一个1C2G的小菜机上编译，
+部署方案是按照google找的教程的
+<img src="https://oss.isugar.wang/9SZdOJ.png" alt="pic"></p>
+<p>然后。当我运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo docker-compose -f docker-compose.yml up
+</code></pre></td></tr></table>
+</div>
+</div><p>不到5分钟，我的小机器彻底失去了联系
+CPU100% 内存100%，连ssh都连不上</p>
+<h3 id="step2-第二次失败">step2 第二次失败</h3>
+<p>吃了第一次亏之后，
+想办法搞了一台大机器
+<img src="https://oss.isugar.wang/VGQEFT.png" alt="pic"></p>
+<p>运行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo docker-compose -f docker-compose.yml up
+</code></pre></td></tr></table>
+</div>
+</div><p>然后，又被坑了。pip安装超时，中断了安装
+囧</p>
+<h3 id="step3-第三次失败">step3 第三次失败</h3>
+<p>经历了第三次痛苦的失败后，我机智的在Dockerfile的pip里加上了</p>
+<blockquote>
+<p>-i <a href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
+</blockquote>
+<p>然后再run</p>
+<blockquote>
+<p>sudo nohub docker-compose -f docker-compose.yml up &gt; up.log &amp;</p>
+</blockquote>
+<p>经过漫长的构建后，终于成功的构建完了
+然后看启动日志
+<img src="https://oss.isugar.wang/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_a0f8b9fc-04b4-4241-8b87-5769991e2758.png" alt="pic">
+wtf? Permission Denied!!!，感觉像是docker权限配置问题
+改配置build，还是失败了。试了好几次。还是失败了</p>
+<h3 id="step4-意外的成功">step4 意外的成功</h3>
+<p>最后，只能到github看README.md了，
+看看有没有有用的信息或者其他人报告问题
+然后看到有个setup文件夹，里面有个setup.sh
+抱着试一试的心态，run了一下setup.sh
+没想到日志刷刷刷。然后就构建好了
+打开5000端口，熟悉的界面。感动到哭
+导入一个测试数据源，查一下
+<img src="https://oss.isugar.wang/kavxTW.png" alt="pic">
+熟悉的界面。感动到哭，搞了差不多一个星期！！！</p>
+<h3 id="step5-end">step5 END</h3>
+<p>github没有看到搭建教程！
+然后第三方搭建教程都是跑docker-compose!!!
+有时候真的需要慢下来仔细思考
+别人的经验不一定是对的！！！</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">qxsugar</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-05-14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/warehouse/">warehouse</a>
+          <a href="/tags/redash/">redash</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E6%90%AD%E5%BB%BAhadoop/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">搭建hadoop</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/hive%E8%AF%BB%E5%8F%96hdfs/">
+            <span class="next-text nav-default">Hive查询HDFS数据</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:qxsugar@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/qxsugar" class="iconfont icon-github" title="github"></a>
+  <a href="https://me.isugar.wang/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>qxsugar</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126221826-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

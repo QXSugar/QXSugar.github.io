@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hadoop on brevity is beauty</title>
+    <link>https://me.isugar.wang/tags/hadoop/</link>
+    <description>Recent content in hadoop on brevity is beauty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 14 May 2020 10:07:24 +0000</lastBuildDate>
+    
+	<atom:link href="https://me.isugar.wang/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>搭建hadoop</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhadoop/</link>
+      <pubDate>Thu, 14 May 2020 10:07:24 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhadoop/</guid>
+      <description>本篇介绍如何在单机搭建一个hadoop系统 step1 前言 hadoop 可以理解为分布式存储仓库，通过分布存储支撑大量数据 这里不做过多的介绍，具体可以了解官网 step2 环</description>
+    </item>
+    
+  </channel>
+</rss>

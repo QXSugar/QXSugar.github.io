@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sqoop on brevity is beauty</title>
+    <link>https://me.isugar.wang/tags/sqoop/</link>
+    <description>Recent content in sqoop on brevity is beauty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 14 May 2020 09:40:06 +0000</lastBuildDate>
+    
+	<atom:link href="https://me.isugar.wang/tags/sqoop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>搭建搭建sqoop</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAsqoop/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAsqoop/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

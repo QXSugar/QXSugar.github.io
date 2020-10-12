@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on brevity is beauty</title>
+    <link>https://me.isugar.wang/tags/redis/</link>
+    <description>Recent content in Redis on brevity is beauty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 14 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://me.isugar.wang/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一次Redis内存分析记录</title>
+      <link>https://me.isugar.wang/post/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+      <description>公司用的是Redis机器。 最近迁移了一次机房。 顺便用上了第三方的Redis存储。 然后，过了不久，redis内存就满了。 step1 事情起因 一开始我们买</description>
+    </item>
+    
+  </channel>
+</rss>

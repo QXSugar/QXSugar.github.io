@@ -6,18 +6,108 @@
     <description>Recent content in Posts on brevity is beauty</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 21 Sep 2018 11:05:54 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 10:07:24 +0000</lastBuildDate>
     
 	<atom:link href="https://me.isugar.wang/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>新的开始</title>
+      <title>搭建hadoop</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhadoop/</link>
+      <pubDate>Thu, 14 May 2020 10:07:24 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhadoop/</guid>
+      <description>本篇介绍如何在单机搭建一个hadoop系统 step1 前言 hadoop 可以理解为分布式存储仓库，通过分布存储支撑大量数据 这里不做过多的介绍，具体可以了解官网 step2 环</description>
+    </item>
+    
+    <item>
+      <title>搭建REDASH</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAredash/</link>
+      <pubDate>Thu, 14 May 2020 09:46:59 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAredash/</guid>
+      <description>公司的大数据平台用的是redash， 日常使用感觉真香。 redash是开源的。 最近想自己搭建一个来玩玩。 然后被坑到哭了。 记录一下。 redash 地址 地址 step1</description>
+    </item>
+    
+    <item>
+      <title>Hive查询HDFS数据</title>
+      <link>https://me.isugar.wang/post/hive%E8%AF%BB%E5%8F%96hdfs/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/hive%E8%AF%BB%E5%8F%96hdfs/</guid>
+      <description>Hive读取HDFS文件 新建一张表 1 create table demo (id int, name string, age int) ROW FORMAT DELIMITED FIELDS TERMINATED BY &amp;#39;\t&amp;#39; STORED AS TEXTFILE; 加载数据到表 1 load data inpath &amp;#39;hdfs文件&amp;#39; into table wyp;</description>
+    </item>
+    
+    <item>
+      <title>搭建Hive</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhive/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhive/</guid>
+      <description>schematool -dbType mysql -initSchema 启动hive报错 1 2 3 4 5 6 7 8 9 10 11 12 Exception in thread &amp;#34;main&amp;#34; java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader &amp;#39;bootstrap&amp;#39;) at org.apache.hadoop.hive.ql.session.SessionState.&amp;lt;init&amp;gt;(SessionState.java:413) at org.apache.hadoop.hive.ql.session.SessionState.&amp;lt;init&amp;gt;(SessionState.java:389) at org.apache.hadoop.hive.cli.CliSessionState.&amp;lt;init&amp;gt;(CliSessionState.java:60) at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:705) at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.base/java.lang.reflect.Method.invoke(Method.java:566) at org.apache.hadoop.util.RunJar.run(RunJar.java:244) at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</description>
+    </item>
+    
+    <item>
+      <title>搭建presto</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BApresto/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BApresto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>搭建一套Warehouse</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAwarehouse/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAwarehouse/</guid>
+      <description>现在很多第三方平台已经实现了数据仓库。 但是如果一开始就用人家搭建好的工具，那么自己的能力是不会得到成长的。 所以决定自己搭建一套单机系统来实践</description>
+    </item>
+    
+    <item>
+      <title>搭建搭建sqoop</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAsqoop/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAsqoop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql查询命中率查询脚本</title>
+      <link>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Tue, 27 Aug 2019 14:45:26 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</guid>
+      <description>当一个mysql的查询量很高时候，有很多种优化方案。 分库分表，主从分离等都是不错的选择。 主从分离情况下，我们怎么权衡一个DB够不够优秀呢? 通</description>
+    </item>
+    
+    <item>
+      <title>mysql常用命令整理</title>
+      <link>https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sat, 24 Aug 2019 05:11:00 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</guid>
+      <description>整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 FLUSH TABLES WITH READ LOCK 解锁操作 UNLOCK TABLES MySql备</description>
+    </item>
+    
+    <item>
+      <title>一次Redis内存分析记录</title>
+      <link>https://me.isugar.wang/post/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+      <description>公司用的是Redis机器。 最近迁移了一次机房。 顺便用上了第三方的Redis存储。 然后，过了不久，redis内存就满了。 step1 事情起因 一开始我们买</description>
+    </item>
+    
+    <item>
+      <title>终不似，少年游</title>
       <link>https://me.isugar.wang/post/start/</link>
       <pubDate>Fri, 21 Sep 2018 11:05:54 +0000</pubDate>
       
       <guid>https://me.isugar.wang/post/start/</guid>
-      <description>记录一下自己的学习成长路线 加油～ 天道酬勤, 总有一天会蜕变的 感觉自己好懒啊。2018都快过去了才写了那么一点东西 卧槽，2019快完了。还没写东</description>
+      <description>欲买桂花同载酒，终不似，少年游 &amp;mdash;刘过 胡言乱语 学过或者看过的东西，没有整理记录的话，总感觉没有安全感。 感觉自己好懒啊。2018都快</description>
     </item>
     
   </channel>

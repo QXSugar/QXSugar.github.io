@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hive on brevity is beauty</title>
+    <link>https://me.isugar.wang/tags/hive/</link>
+    <description>Recent content in hive on brevity is beauty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 14 May 2020 09:40:06 +0000</lastBuildDate>
+    
+	<atom:link href="https://me.isugar.wang/tags/hive/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hive查询HDFS数据</title>
+      <link>https://me.isugar.wang/post/hive%E8%AF%BB%E5%8F%96hdfs/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/hive%E8%AF%BB%E5%8F%96hdfs/</guid>
+      <description>Hive读取HDFS文件 新建一张表 1 create table demo (id int, name string, age int) ROW FORMAT DELIMITED FIELDS TERMINATED BY &amp;#39;\t&amp;#39; STORED AS TEXTFILE; 加载数据到表 1 load data inpath &amp;#39;hdfs文件&amp;#39; into table wyp;</description>
+    </item>
+    
+    <item>
+      <title>搭建Hive</title>
+      <link>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhive/</link>
+      <pubDate>Thu, 14 May 2020 09:40:06 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E6%90%AD%E5%BB%BAhive/</guid>
+      <description>schematool -dbType mysql -initSchema 启动hive报错 1 2 3 4 5 6 7 8 9 10 11 12 Exception in thread &amp;#34;main&amp;#34; java.lang.ClassCastException: class jdk.internal.loader.ClassLoaders$AppClassLoader cannot be cast to class java.net.URLClassLoader (jdk.internal.loader.ClassLoaders$AppClassLoader and java.net.URLClassLoader are in module java.base of loader &amp;#39;bootstrap&amp;#39;) at org.apache.hadoop.hive.ql.session.SessionState.&amp;lt;init&amp;gt;(SessionState.java:413) at org.apache.hadoop.hive.ql.session.SessionState.&amp;lt;init&amp;gt;(SessionState.java:389) at org.apache.hadoop.hive.cli.CliSessionState.&amp;lt;init&amp;gt;(CliSessionState.java:60) at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:705) at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) at java.base/java.lang.reflect.Method.invoke(Method.java:566) at org.apache.hadoop.util.RunJar.run(RunJar.java:244) at org.apache.hadoop.util.RunJar.main(RunJar.java:158)</description>
+    </item>
+    
+  </channel>
+</rss>
