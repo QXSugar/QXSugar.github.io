@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on brevity is beauty</title>
+    <link>https://me.isugar.wang/post/</link>
+    <description>Recent content in Posts on brevity is beauty</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 21 Sep 2018 11:05:54 +0000</lastBuildDate>
+    
+	<atom:link href="https://me.isugar.wang/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>新的开始</title>
+      <link>https://me.isugar.wang/post/start/</link>
+      <pubDate>Fri, 21 Sep 2018 11:05:54 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/start/</guid>
+      <description>记录一下自己的学习成长路线 加油～ 天道酬勤, 总有一天会蜕变的 感觉自己好懒啊。2018都快过去了才写了那么一点东西 卧槽，2019快完了。还没写东</description>
+    </item>
+    
+  </channel>
+</rss>

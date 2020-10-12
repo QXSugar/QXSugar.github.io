@@ -1,6 +1,2 @@
 User-agent: *
-Allow: /
-Disallow: /about/
-
-User-agent: baiduspider
-Disallow: /
+Sitemap: https://me.isugar.wang/sitemap.xml

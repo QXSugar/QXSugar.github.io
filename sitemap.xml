@@ -1,0 +1,60 @@
+<?xml-stylesheet type="text/xsl" href="https://me.isugar.wang/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://me.isugar.wang/about/</loc>
+    <lastmod>2020-10-12T11:13:25+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.isugar.wang/</loc>
+    <lastmod>2018-09-21T11:05:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.isugar.wang/categories/</loc>
+    <lastmod>2018-09-21T11:05:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.isugar.wang/tags/hugo/</loc>
+    <lastmod>2018-09-21T11:05:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.isugar.wang/categories/hugo/</loc>
+    <lastmod>2018-09-21T11:05:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.isugar.wang/post/</loc>
+    <lastmod>2018-09-21T11:05:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.isugar.wang/tags/</loc>
+    <lastmod>2018-09-21T11:05:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://me.isugar.wang/post/start/</loc>
+    <lastmod>2018-09-21T11:05:54+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>
