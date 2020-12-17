@@ -16,14 +16,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="qxsugar" /><meta name="description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 FLUSH TABLES WITH READ LOCK 解锁操作 UNLOCK TABLES MySql备" /><meta name="keywords" content="python, go, 数据" />
+<meta name="author" content="qxsugar" /><meta name="description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 1 FLUSH TABLES WITH READ LOCK 解锁操作 1 UNLOCK TABLES MySq" /><meta name="keywords" content="python, go, 数据" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.74.3 with theme even" />
+<meta name="generator" content="Hugo 0.76.3 with theme even" />
 
 
 <link rel="canonical" href="https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
@@ -35,28 +35,29 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.cabed02785402aec3d84ba4be679eb280170857bb6ca7892eb8bb67a2828add5.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/syntax.css">
 
 
 <meta property="og:title" content="mysql常用命令整理" />
-<meta property="og:description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 FLUSH TABLES WITH READ LOCK 解锁操作 UNLOCK TABLES MySql备" />
+<meta property="og:description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 1 FLUSH TABLES WITH READ LOCK 解锁操作 1 UNLOCK TABLES MySq" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/" />
 <meta property="article:published_time" content="2019-08-24T05:11:00+00:00" />
 <meta property="article:modified_time" content="2019-08-24T05:11:00+00:00" />
 <meta itemprop="name" content="mysql常用命令整理">
-<meta itemprop="description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 FLUSH TABLES WITH READ LOCK 解锁操作 UNLOCK TABLES MySql备">
+<meta itemprop="description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 1 FLUSH TABLES WITH READ LOCK 解锁操作 1 UNLOCK TABLES MySq">
 <meta itemprop="datePublished" content="2019-08-24T05:11:00+00:00" />
 <meta itemprop="dateModified" content="2019-08-24T05:11:00+00:00" />
-<meta itemprop="wordCount" content="335">
+<meta itemprop="wordCount" content="352">
 
 
 
 <meta itemprop="keywords" content="mysql," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="mysql常用命令整理"/>
-<meta name="twitter:description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 FLUSH TABLES WITH READ LOCK 解锁操作 UNLOCK TABLES MySql备"/>
+<meta name="twitter:description" content="整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 1 FLUSH TABLES WITH READ LOCK 解锁操作 1 UNLOCK TABLES MySq"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -159,128 +160,199 @@
 <h4 id="mysql-锁全表">MySql 锁全表</h4>
 <p>一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读</p>
 <ol>
-<li>
-<p>上锁操作</p>
-<blockquote>
-<p>FLUSH TABLES WITH READ LOCK</p>
-</blockquote>
-</li>
-<li>
-<p>解锁操作</p>
-<blockquote>
-<p>UNLOCK TABLES</p>
-</blockquote>
-</li>
+<li>上锁操作</li>
 </ol>
-<h4 id="mysql备份">MySql备份</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">FLUSH TABLES WITH READ LOCK
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>解锁操作</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">UNLOCK TABLES
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="mysql备份">MySql备份</h4>
 <ol>
-<li>
-<p>备份库中的表结构</p>
-<blockquote>
-<p>mysqldump -uxxx -pxxx -d db &gt; db_bk.sq</p>
-</blockquote>
-</li>
-<li>
-<p>备份某一张表</p>
-<blockquote>
-<p>mysqldump -uxxx -pxxx db tbl &gt; bk.sql</p>
-</blockquote>
-</li>
-<li>
-<p>按条件备份一张表</p>
-<blockquote>
-<p>mysqldump -uxxx -pxxx db tbl -w &lsquo;id=1&rsquo; &gt; bk.sql</p>
-</blockquote>
-</li>
-<li>
-<p>恢复</p>
-<blockquote>
-<p>mysql -uxxx -pxxx &lt; bk.sql</p>
-</blockquote>
-</li>
+<li>备份库中的表结构</li>
 </ol>
-<h4 id="mysql-rename-操作">Mysql Rename 操作</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mysqldump -uxxx -pxxx -d db &gt; db_bk.sq
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>备份某一张表</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mysqldump -uxxx -pxxx db tbl &gt; bk.sql
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>按条件备份一张表</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mysqldump -uxxx -pxxx db tbl -w <span class="s1">&#39;id=1&#39;</span> &gt; bk.sql
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>恢复</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mysql -uxxx -pxxx &lt; bk.sql
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="mysql-rename-操作">Mysql Rename 操作</h4>
 <ol>
-<li>
-<p>移动表，把表从一个库移动到另一个库</p>
-<blockquote>
-<p>rename table db1.tbl1 to db2.tbl2</p>
-</blockquote>
-</li>
-<li>
-<p>修改表名字</p>
-</li>
+<li>移动表，把表从一个库移动到另一个库</li>
 </ol>
-<blockquote>
-<p>rename table old_name to new_name</p>
-</blockquote>
-<ol start="3">
-<li>
-<p>替换表 t1 &mdash; t2</p>
-<blockquote>
-<p>rename table t1 to tmp, t2 to t1, tmp to t2;</p>
-</blockquote>
-</li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rename table db1.tbl1 to db2.tbl2
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>修改表名字</li>
 </ol>
-<h4 id="mysql-事务等级">MySql 事务等级</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rename table old_name to new_name
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>替换表 t1 &mdash; t2</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rename table t1 to tmp, t2 to t1, tmp to t2<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="mysql-事务等级">MySql 事务等级</h4>
 <ol>
-<li>
-<p>查看当前事务等级</p>
-<blockquote>
-<p>select @@global.tx_isolation,@@tx_isolation;</p>
-</blockquote>
-</li>
-<li>
-<p>修改成读未提交 RU</p>
-<blockquote>
-<p>set [global | session] transaction isolation level read uncommitted;</p>
-</blockquote>
-</li>
-<li>
-<p>修改成读已提交 RC</p>
-<blockquote>
-<p>set  [global | session] transaction isolation level read committed;</p>
-</blockquote>
-</li>
-<li>
-<p>修改成可重复读</p>
-<blockquote>
-<p>set  [global | session] transaction isolation level repeatable read;</p>
-</blockquote>
-</li>
-<li>
-<p>修改成窜行</p>
-<blockquote>
-<p>set  [global | session] transaction isolation level serializable;</p>
-</blockquote>
-</li>
+<li>查看当前事务等级</li>
 </ol>
-<p>[global | session] 这个修改对当前session生效还是全局生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">select</span> @@global.tx_isolation,@@tx_isolation<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>修改成读未提交 RU</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="o">[</span>global <span class="p">|</span> session<span class="o">]</span> transaction isolation level <span class="nb">read</span> uncommitted<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>修改成读已提交 RC</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="o">[</span>global <span class="p">|</span> session<span class="o">]</span> transaction isolation level <span class="nb">read</span> committed<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>修改成可重复读</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span>  <span class="o">[</span>global <span class="p">|</span> session<span class="o">]</span> transaction isolation level repeatable read<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>修改成窜行</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="o">[</span>global <span class="p">|</span> session<span class="o">]</span> transaction isolation level serializable<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><em>[global | session] 这个修改对当前session生效还是全局生效</em></p>
 <h4 id="mysql-修改表库引擎">MySql 修改表库引擎</h4>
 <ol>
-<li>
-<p>修改成Innodb</p>
-<blockquote>
-<p>alter table xxx engine=innodb;</p>
-</blockquote>
-</li>
+<li>修改成Innodb</li>
 </ol>
-<h3 id="mysql-autocommit-配置">MySql autocommit 配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">alter table xxx <span class="nv">engine</span><span class="o">=</span>innodb<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="mysql-autocommit-配置">MySql autocommit 配置</h3>
 <ol>
-<li>
-<p>查看自动提交开关</p>
-<blockquote>
-<p>show [global | session] variables like &lsquo;autocommit&rsquo;;</p>
-</blockquote>
-</li>
-<li>
-<p>设置自动提交开关</p>
-<blockquote>
-<p>set [global | session] autocommit = [0 | 1]</p>
-</blockquote>
-</li>
+<li>查看自动提交开关</li>
 </ol>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">show <span class="o">[</span>global <span class="p">|</span> session<span class="o">]</span> variables like <span class="s1">&#39;autocommit&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>设置自动提交开关</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="o">[</span>global <span class="p">|</span> session<span class="o">]</span> <span class="nv">autocommit</span> <span class="o">=</span> <span class="o">[</span><span class="m">0</span> <span class="p">|</span> 1<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

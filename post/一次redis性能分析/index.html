@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.74.3 with theme even" />
+<meta name="generator" content="Hugo 0.76.3 with theme even" />
 
 
 <link rel="canonical" href="https://me.isugar.wang/post/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" />
@@ -35,8 +35,9 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.cabed02785402aec3d84ba4be679eb280170857bb6ca7892eb8bb67a2828add5.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/syntax.css">
 
 
 <meta property="og:title" content="一次Redis内存分析记录" />
@@ -49,7 +50,7 @@
 <meta itemprop="description" content="公司用的是Redis机器。 最近迁移了一次机房。 顺便用上了第三方的Redis存储。 然后，过了不久，redis内存就满了。 step1 事情起因 一开始我们买">
 <meta itemprop="datePublished" content="2019-08-14T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-08-14T00:00:00+00:00" />
-<meta itemprop="wordCount" content="866">
+<meta itemprop="wordCount" content="870">
 
 
 
@@ -174,10 +175,15 @@
 但是却可以快速分析大概内容，各种类型占比，而且是可视化的
 rdr原本的下载链接失效了。<a href="https://github.com/gohouse/rdr/releases/tag/v0.1.0">新的下载链接</a></p>
 <p>运行</p>
-<blockquote>
-<p>./rdr-amd64-v0.1-linux.bin show -p 8080 redis.rdb</p>
-</blockquote>
-<p>生成好之后。我们打开8080端口，就可以看到分析结果了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">./rdr-amd64-v0.1-linux.bin show -p <span class="m">8080</span> redis.rdb
+</code></pre></td></tr></table>
+</div>
+</div><p>生成好之后。我们打开8080端口，就可以看到分析结果了</p>
 <p><img src="/images/NOqC6S.png" alt=""></p>
 <p>从这里可以看到，我们主要内存才用了3.5G，那么为什么12G都快满了呢，
 后来和第三方技术交流才知道是内存碎片率太高了，都快250%了。
@@ -186,18 +192,33 @@ rdr原本的下载链接失效了。<a href="https://github.com/gohouse/rdr/rele
 <p>后面这个事情就交给运维哥哥去处理了～</p>
 <h3 id="step3-虽然解决了内存的问题但是还是想继续分析下redis总感觉有人在代码里留下了秘密">step3 虽然解决了内存的问题。但是还是想继续分析下redis，总感觉有人在代码里留下了秘密</h3>
 <p>我们先装个redis-rdb-tools</p>
-<blockquote>
-<p>pip install rdbtools</p>
-</blockquote>
-<p>把rdb文件转成csv文件</p>
-<blockquote>
-<p>rdb -c memory redis.rdb -f redis.csv</p>
-</blockquote>
-<p>看一下csv的格式</p>
-<blockquote>
-<p>less redis.csv</p>
-</blockquote>
-<p>列含义如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">pip install rdbtools 
+</code></pre></td></tr></table>
+</div>
+</div><p>把rdb文件转成csv文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">rdb -c memory redis.rdb -f redis.csv
+</code></pre></td></tr></table>
+</div>
+</div><p>看一下csv的格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">less redis.csv
+</code></pre></td></tr></table>
+</div>
+</div><p>列含义如下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

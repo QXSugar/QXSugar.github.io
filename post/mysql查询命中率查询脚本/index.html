@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.74.3 with theme even" />
+<meta name="generator" content="Hugo 0.76.3 with theme even" />
 
 
 <link rel="canonical" href="https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/" />
@@ -35,8 +35,9 @@
 
 
 
-<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link href="/sass/main.min.cabed02785402aec3d84ba4be679eb280170857bb6ca7892eb8bb67a2828add5.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/syntax.css">
 
 
 <meta property="og:title" content="mysql查询命中率查询脚本" />
@@ -49,7 +50,7 @@
 <meta itemprop="description" content="当一个mysql的查询量很高时候，有很多种优化方案。 分库分表，主从分离等都是不错的选择。 主从分离情况下，我们怎么权衡一个DB够不够优秀呢? 通">
 <meta itemprop="datePublished" content="2019-08-27T14:45:26+00:00" />
 <meta itemprop="dateModified" content="2019-08-27T14:45:26+00:00" />
-<meta itemprop="wordCount" content="1116">
+<meta itemprop="wordCount" content="1119">
 
 
 
@@ -170,10 +171,15 @@
 一般来说。我们希望读库的缓存命中率达到 99.95% 以上。</p>
 <h3 id="mysql-缓存参数配置">MySql 缓存参数配置</h3>
 <p>查看当前缓存配置大小</p>
-<blockquote>
-<p>show variables like &lsquo;innodb_buffer_pool_size&rsquo;</p>
-</blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">show variables like <span class="s1">&#39;innodb_buffer_pool_size&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -190,10 +196,15 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>控制台修改缓存大小</p>
-<blockquote>
-<p>SET GLOBAL innodb_buffer_pool_size=6442450944;</p>
-</blockquote>
-<p>修改缓存大小方案</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">SET GLOBAL <span class="nv">innodb_buffer_pool_size</span><span class="o">=</span>6442450944<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>修改缓存大小方案</p>
 <ol>
 <li>修改mysql配置文件并重启mysql</li>
 <li>在mysql控制台修改配置，同时修改配置，不用重启</li>
@@ -203,10 +214,15 @@
 <p>根据公式 缓存命中率 = 读内存次数 / 查询总数 我们很容易算出命中率
 读内存次数 = &ldquo;Innodb_buffer_pool_reads&rdquo;
 查询总次数 = &ldquo;Innodb_buffer_pool_read_requests&rdquo;</p>
-<blockquote>
-<p>show status like &lsquo;%pool_read%&rsquo;</p>
-</blockquote>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">show status like <span class="s1">&#39;%pool_read%&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -357,11 +373,7 @@ sleep <span class="si">${</span><span class="nv">slp</span><span class="si">}</s
           <a href="/tags/mysql/">mysql</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/%E6%90%AD%E5%BB%BAsqoop/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">搭建搭建sqoop</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
+        
         <a class="next" href="/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/">
             <span class="next-text nav-default">mysql常用命令整理</span>
             <span class="next-text nav-mobile">Next</span>

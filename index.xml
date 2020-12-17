@@ -6,7 +6,7 @@
     <description>Recent content on brevity is beauty</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 21 Sep 2018 11:05:54 +0000</lastBuildDate><atom:link href="https://me.isugar.wang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Aug 2019 14:45:26 +0000</lastBuildDate><atom:link href="https://me.isugar.wang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://me.isugar.wang/about/</link>
@@ -14,6 +14,33 @@
       
       <guid>https://me.isugar.wang/about/</guid>
       <description>立志成为架构师。头发尚在，怎敢停歇 技能树 加个好友？ 请他喝茶！</description>
+    </item>
+    
+    <item>
+      <title>mysql查询命中率查询脚本</title>
+      <link>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Tue, 27 Aug 2019 14:45:26 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</guid>
+      <description>当一个mysql的查询量很高时候，有很多种优化方案。 分库分表，主从分离等都是不错的选择。 主从分离情况下，我们怎么权衡一个DB够不够优秀呢? 通</description>
+    </item>
+    
+    <item>
+      <title>mysql常用命令整理</title>
+      <link>https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sat, 24 Aug 2019 05:11:00 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</guid>
+      <description>整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 1 FLUSH TABLES WITH READ LOCK 解锁操作 1 UNLOCK TABLES MySq</description>
+    </item>
+    
+    <item>
+      <title>一次Redis内存分析记录</title>
+      <link>https://me.isugar.wang/post/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://me.isugar.wang/post/%E4%B8%80%E6%AC%A1redis%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+      <description>公司用的是Redis机器。 最近迁移了一次机房。 顺便用上了第三方的Redis存储。 然后，过了不久，redis内存就满了。 step1 事情起因 一开始我们买</description>
     </item>
     
     <item>
