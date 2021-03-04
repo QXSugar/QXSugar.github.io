@@ -8,12 +8,12 @@
     <language>en</language>
     <lastBuildDate>Tue, 27 Aug 2019 14:45:26 +0000</lastBuildDate><atom:link href="https://me.isugar.wang/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>mysql查询命中率查询脚本</title>
+      <title>mysql查询命中率分析</title>
       <link>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Tue, 27 Aug 2019 14:45:26 +0000</pubDate>
       
       <guid>https://me.isugar.wang/post/mysql%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%B8%AD%E7%8E%87%E6%9F%A5%E8%AF%A2%E8%84%9A%E6%9C%AC/</guid>
-      <description>当一个mysql的查询量很高时候，有很多种优化方案。 分库分表，主从分离等都是不错的选择。 主从分离情况下，我们怎么权衡一个DB够不够优秀呢? 通</description>
+      <description>当一个mysql的查询量很高时候，有很多种优化方案。 分库分表，主从分离等都是不错的选择。 主从分离情况下，我们怎么权衡一个DB的性能有没有被最</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Sat, 24 Aug 2019 05:11:00 +0000</pubDate>
       
       <guid>https://me.isugar.wang/post/mysql%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</guid>
-      <description>整理一下最近常用的mysql语句 MySql 锁全表 一般在做迁移，要保留读时候用，会阻塞其他的写操作，不影响读 上锁操作 1 FLUSH TABLES WITH READ LOCK 解锁操作 1 UNLOCK TABLES MySq</description>
+      <description>从事后台开发，打交道最多的就是mysql了。所以记录一下常用的mysql指令，就当是笔记吧! MySql 锁表操作 一般在做迁移，要保留读时候用，会阻塞其</description>
     </item>
     
   </channel>
